@@ -1,24 +1,39 @@
+import profile from"./assets/Screenshot From 2026-09-19 18-38-18.png";
+import "./header.css"
 function Header() {
 
     return (
                 <header>
-                    <h1>My Website</h1>
+                    <h1 className="h1">My Website</h1>
+                    <img className="img" src={profile}/>
                     <nav>
-                        <ul>
+                        
+                             <a>LOGIN</a>
                             <li>
-                                <a href="#">Home page</a>
+                            <input type="email" placeholder="enter email"></input>
+                           
                             </li>
                             <li>
-                                About
+                                 <input type="password" placeholder="enter password"></input>
+
+                                 
+                                </li>    
+                        
+                            
+                            <li>
+                            <button className="submit" type="submit">Submit</button>
                             </li>
-                        </ul>
+                            <li>
+                                <p3><a href="">FORGET PASSWORD?</a></p3>
+                            </li>
+                        
                     </nav>
 
-                    <p1><a href="#">LOGIN</a></p1>  
+                    <p1></p1>  
                 <br></br>      
-                    <p2><a href="">REGISTER</a></p2> 
+                    <p2><a className="register" href="#">REGISTER HERE</a></p2> 
                     <br></br>
-                    <p3><a href="">FORGET PASSWORD</a></p3>
+                    
          </header>
 
     )
