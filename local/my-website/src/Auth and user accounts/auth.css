@@ -1,0 +1,427 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --auth-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --auth-primary: #4f46e5;
+  --auth-primary-hover: #4338ca;
+  --auth-primary-light: #eef2ff;
+  --auth-bg: #f8fafc;
+  --auth-card-bg: #ffffff;
+  --auth-text-main: #0f172a;
+  --auth-text-muted: #64748b;
+  --auth-border: #e2e8f0;
+  --auth-border-focus: #818cf8;
+  --auth-success: #10b981;
+  --auth-success-light: #ecfdf5;
+  --auth-warning: #f59e0b;
+  --auth-warning-light: #fffbeb;
+  --auth-danger: #ef4444;
+  --auth-danger-light: #fef2f2;
+  --auth-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --auth-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --auth-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --auth-radius: 12px;
+  --auth-radius-sm: 8px;
+}
+
+/* Page Layout Wrappers */
+.sms-page-wrapper {
+  font-family: var(--auth-font);
+  background-color: var(--auth-bg);
+  min-height: 100vh;
+  padding: 32px 20px;
+  box-sizing: border-box;
+  color: var(--auth-text-main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sms-auth-card {
+  background: var(--auth-card-bg);
+  border: 1px solid var(--auth-border);
+  border-radius: var(--auth-radius);
+  box-shadow: var(--auth-shadow-lg);
+  width: 100%;
+  max-width: 460px;
+  padding: 36px 32px;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.sms-dashboard-card {
+  background: var(--auth-card-bg);
+  border: 1px solid var(--auth-border);
+  border-radius: var(--auth-radius);
+  box-shadow: var(--auth-shadow);
+  width: 100%;
+  max-width: 1100px;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+/* Headers & Titles */
+.sms-header-section {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.sms-portal-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--auth-primary-light);
+  color: var(--auth-primary);
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.sms-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--auth-text-main);
+  margin: 0 0 6px 0;
+  letter-spacing: -0.3px;
+}
+
+.sms-subtitle {
+  font-size: 14px;
+  color: var(--auth-text-muted);
+  margin: 0;
+}
+
+/* Form Styles */
+.sms-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sms-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.sms-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--auth-text-main);
+}
+
+.sms-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sms-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--auth-text-main);
+  background: #ffffff;
+  border: 1px solid var(--auth-border);
+  border-radius: var(--auth-radius-sm);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.sms-input:focus {
+  border-color: var(--auth-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.sms-input-toggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  color: var(--auth-text-muted);
+}
+
+/* Buttons */
+.sms-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  border-radius: var(--auth-radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.sms-btn-primary {
+  background: var(--auth-primary);
+  color: #ffffff;
+}
+
+.sms-btn-primary:hover:not(:disabled) {
+  background: var(--auth-primary-hover);
+  transform: translateY(-1px);
+}
+
+.sms-btn-secondary {
+  background: #ffffff;
+  color: var(--auth-text-main);
+  border-color: var(--auth-border);
+}
+
+.sms-btn-secondary:hover:not(:disabled) {
+  background: #f1f5f9;
+}
+
+.sms-btn-danger {
+  background: var(--auth-danger-light);
+  color: var(--auth-danger);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.sms-btn-danger:hover:not(:disabled) {
+  background: #fee2e2;
+}
+
+.sms-btn-sm {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.sms-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Checkbox & Options */
+.sms-checkbox-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.sms-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--auth-text-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.sms-link {
+  color: var(--auth-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.sms-link:hover {
+  text-decoration: underline;
+}
+
+/* Alerts and Messages */
+.sms-alert {
+  padding: 12px 16px;
+  border-radius: var(--auth-radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.sms-alert-success {
+  background: var(--auth-success-light);
+  color: #065f46;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.sms-alert-danger {
+  background: var(--auth-danger-light);
+  color: #991b1b;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.sms-alert-warning {
+  background: var(--auth-warning-light);
+  color: #92400e;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+/* Badges */
+.sms-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.sms-badge-active {
+  background: var(--auth-success-light);
+  color: var(--auth-success);
+}
+
+.sms-badge-inactive {
+  background: var(--auth-warning-light);
+  color: var(--auth-warning);
+}
+
+.sms-badge-deactivated {
+  background: var(--auth-danger-light);
+  color: var(--auth-danger);
+}
+
+.sms-badge-role {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+/* Tabs */
+.sms-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--auth-border);
+  margin-bottom: 24px;
+}
+
+.sms-tab {
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--auth-text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sms-tab.active {
+  color: var(--auth-primary);
+  border-bottom-color: var(--auth-primary);
+}
+
+/* Tables */
+.sms-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--auth-border);
+  border-radius: var(--auth-radius-sm);
+}
+
+.sms-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+}
+
+.sms-table th {
+  background: #f8fafc;
+  padding: 12px 16px;
+  font-weight: 600;
+  color: var(--auth-text-muted);
+  border-bottom: 1px solid var(--auth-border);
+}
+
+.sms-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--auth-border);
+  color: var(--auth-text-main);
+  vertical-align: middle;
+}
+
+.sms-table tr:last-child td {
+  border-bottom: none;
+}
+
+.sms-table tr:hover td {
+  background: #f8fafc;
+}
+
+/* Grid & Responsive utils */
+.sms-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .sms-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .sms-dashboard-card,
+  .sms-auth-card {
+    padding: 20px;
+  }
+}
+
+/* Inbuilt Login Generator & Admin Banner */
+.admin-credentials-banner {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(129, 140, 248, 0.14) 100%);
+  border: 1px solid rgba(79, 70, 229, 0.3);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.generator-slip {
+  background: #f8fafc;
+  border: 1px dashed var(--auth-primary);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.generator-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background: #0f172a;
+  color: #38bdf8;
+  padding: 4px 9px;
+  border-radius: 6px;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.generator-badge-admin {
+  background: #4f46e5;
+  color: #ffffff;
+}
+
+.generator-badge-teacher {
+  background: #0891b2;
+  color: #ffffff;
+}
+
+.generator-badge-student {
+  background: #10b981;
+  color: #ffffff;
+}
+

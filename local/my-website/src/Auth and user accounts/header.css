@@ -250,13 +250,153 @@ body {
     margin: -8px 0 4px;
 }
 
-/* Form fields & inputs */
+/* Role Selector Tabs */
+.role-tabs {
+    display: flex;
+    gap: 6px;
+    padding: 4px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+}
+
+.theme-dark .role-tabs {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.theme-light .role-tabs {
+    background: #e2e8f0;
+    border: 1px solid #cbd5e1;
+}
+
+.role-tab {
+    flex: 1;
+    padding: 7px 6px;
+    font-size: 12px;
+    font-weight: 600;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    background: transparent;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    text-align: center;
+}
+
+.theme-dark .role-tab {
+    color: #94a3b8;
+}
+
+.theme-dark .role-tab:hover {
+    color: #f1f5f9;
+}
+
+.theme-dark .role-tab.active {
+    background: #6366f1;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+}
+
+.theme-light .role-tab {
+    color: #64748b;
+}
+
+.theme-light .role-tab:hover {
+    color: #0f172a;
+}
+
+.theme-light .role-tab.active {
+    background: #ffffff;
+    color: #4f46e5;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form field & label */
 .form-field {
     position: relative;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: left;
 }
 
-.login-form input {
+.form-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    opacity: 0.85;
+}
+
+/* Checkbox and options row */
+.checkbox-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    margin-top: -4px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #6366f1;
+}
+
+.forgot-link {
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.theme-dark .forgot-link {
+    color: #a5b4fc;
+}
+
+.theme-dark .forgot-link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.theme-light .forgot-link {
+    color: #4f46e5;
+}
+
+.theme-light .forgot-link:hover {
+    color: #3730a3;
+    text-decoration: underline;
+}
+
+/* IT Helpdesk footer */
+.helpdesk-footer {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 12px;
+    opacity: 0.75;
+}
+
+.helpdesk-footer a {
+    color: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.login-form input[type="text"],
+.login-form input[type="email"],
+.login-form input[type="password"] {
     width: 100%;
     box-sizing: border-box;
     padding: 12px 16px;
@@ -290,8 +430,10 @@ body {
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
 }
 
-/* Password field with toggle */
-.password-field {
+/* Input wrapper with toggle */
+.input-wrapper {
+    position: relative;
+    width: 100%;
     display: flex;
     align-items: center;
 }
@@ -307,6 +449,8 @@ body {
     border-radius: 6px;
     transition: transform 0.2s ease;
     user-select: none;
+    color: inherit;
+    line-height: 1;
 }
 
 .password-toggle-btn:hover {
