@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./SchoolDetails.css";
+import { switchActiveSchool } from "./schoolAdminAuth";
 
 const DETAILED_SCHOOLS = [
   {
@@ -222,6 +223,30 @@ function SchoolDetails({ onNavigate, onLogout }) {
             ))}
           </select>
 
+          <button
+            type="button"
+            className="sm-btn sm-btn-primary"
+            style={{ padding: "7px 12px", fontSize: "12px", background: "linear-gradient(135deg, #4f46e5 0%, #4338ca 100%)" }}
+            onClick={() => {
+              switchActiveSchool(school.id);
+              navigateTo("school-dashboard");
+            }}
+            title={`Access ${school.name} Dashboard as Platform Boss`}
+          >
+            📊 Access Dashboard
+          </button>
+          <button
+            type="button"
+            className="sm-btn sm-btn-secondary"
+            style={{ padding: "7px 12px", fontSize: "12px" }}
+            onClick={() => {
+              switchActiveSchool(school.id);
+              navigateTo("student-list");
+            }}
+            title={`View students enrolled in ${school.name}`}
+          >
+            🎓 View Students
+          </button>
           <button
             type="button"
             className="platform-back-link"

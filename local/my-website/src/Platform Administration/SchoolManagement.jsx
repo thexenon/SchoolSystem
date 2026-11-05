@@ -6,6 +6,7 @@ import {
   generateSchoolAdminLogin,
   regenerateSchoolAdminPassword,
   setActiveSchoolAdmin,
+  switchActiveSchool,
 } from "./schoolAdminAuth";
 
 const INITIAL_SCHOOLS = [
@@ -555,7 +556,32 @@ function SchoolManagement({ onNavigate, onLogout }) {
                       <div style={{ display: "inline-flex", gap: "6px" }}>
                         <button
                           type="button"
+                          className="sm-btn sm-btn-primary"
+                          style={{ padding: "5px 10px", fontSize: "11px" }}
+                          onClick={() => {
+                            switchActiveSchool(school.id);
+                            navigateTo("school-dashboard");
+                          }}
+                          title={`Access ${school.name} Dashboard as Platform Boss`}
+                        >
+                          📊 Dashboard
+                        </button>
+                        <button
+                          type="button"
                           className="sm-btn sm-btn-secondary"
+                          style={{ padding: "5px 10px", fontSize: "11px" }}
+                          onClick={() => {
+                            switchActiveSchool(school.id);
+                            navigateTo("student-list");
+                          }}
+                          title={`View students enrolled in ${school.name}`}
+                        >
+                          🎓 Students
+                        </button>
+                        <button
+                          type="button"
+                          className="sm-btn sm-btn-secondary"
+                          style={{ padding: "5px 10px", fontSize: "11px" }}
                           onClick={() => {
                             setActiveView("admins");
                             setAdminSearchQuery(school.name);
@@ -571,6 +597,7 @@ function SchoolManagement({ onNavigate, onLogout }) {
                               ? "sm-btn sm-btn-danger"
                               : "sm-btn sm-btn-success"
                           }
+                          style={{ padding: "5px 10px", fontSize: "11px" }}
                           onClick={() => handleToggleStatus(school.id)}
                         >
                           {school.status === "Active" ? "Suspend" : "Activate"}
@@ -712,6 +739,30 @@ function SchoolManagement({ onNavigate, onLogout }) {
                       <div style={{ display: "inline-flex", gap: "6px" }}>
                         <button
                           type="button"
+                          className="sm-btn sm-btn-primary"
+                          style={{ padding: "6px 10px", fontSize: "11px" }}
+                          onClick={() => {
+                            switchActiveSchool(admin.schoolId);
+                            navigateTo("school-dashboard");
+                          }}
+                          title={`Open ${admin.schoolName} Dashboard`}
+                        >
+                          📊 Dashboard
+                        </button>
+                        <button
+                          type="button"
+                          className="sm-btn sm-btn-secondary"
+                          style={{ padding: "6px 10px", fontSize: "11px" }}
+                          onClick={() => {
+                            switchActiveSchool(admin.schoolId);
+                            navigateTo("student-list");
+                          }}
+                          title={`View ${admin.schoolName} Students`}
+                        >
+                          🎓 Students
+                        </button>
+                        <button
+                          type="button"
                           className="sm-btn sm-btn-secondary"
                           style={{ padding: "6px 10px", fontSize: "11px" }}
                           onClick={() => handleRegeneratePassword(admin.id)}
@@ -721,12 +772,12 @@ function SchoolManagement({ onNavigate, onLogout }) {
                         </button>
                         <button
                           type="button"
-                          className="sm-btn sm-btn-primary"
-                          style={{ padding: "6px 12px", fontSize: "11px" }}
+                          className="sm-btn sm-btn-secondary"
+                          style={{ padding: "6px 10px", fontSize: "11px" }}
                           onClick={() => handleLaunchSchoolPortal(admin)}
-                          title="Open School Admin Portal as this Administrator"
+                          title="Open School Users & Accounts"
                         >
-                          🚀 Launch Portal
+                          👥 Accounts
                         </button>
                       </div>
                     </td>

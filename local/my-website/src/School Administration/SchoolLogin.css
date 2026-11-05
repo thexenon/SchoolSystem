@@ -1,0 +1,298 @@
+/* School Administration Login Gateway Styles */
+.scl-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at 50% 20%, #1e1b4b 0%, #0f172a 60%, #030712 100%);
+  display: flex;
+  align-items: center;
+  justifyContent: center;
+  padding: 30px 20px;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  color: #f8fafc;
+  box-sizing: border-box;
+}
+
+.scl-container {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.scl-brand-header {
+  text-align: center;
+}
+
+.scl-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+  color: #ffffff;
+  font-size: 24px;
+  margin-bottom: 14px;
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.scl-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 6px 0;
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.scl-subtitle {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.scl-card {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.15);
+}
+
+.scl-security-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #c7d2fe;
+}
+
+.scl-security-icon {
+  font-size: 18px;
+}
+
+.scl-alert {
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.4;
+}
+
+.scl-alert-error {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
+
+.scl-alert-success {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #6ee7b7;
+}
+
+.scl-quick-select-card {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+}
+
+.scl-quick-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.scl-quick-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #a5b4fc;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.scl-select {
+  width: 100%;
+  padding: 9px 12px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  color: #f8fafc;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.scl-select:focus {
+  border-color: #6366f1;
+}
+
+.scl-boss-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(202, 138, 4, 0.25) 100%);
+  border: 1px solid rgba(234, 179, 8, 0.4);
+  color: #fde047;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.scl-boss-btn:hover {
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.25) 0%, rgba(202, 138, 4, 0.4) 100%);
+  border-color: #fde047;
+}
+
+.scl-form-group {
+  margin-bottom: 16px;
+}
+
+.scl-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin-bottom: 6px;
+}
+
+.scl-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.scl-input-icon {
+  position: absolute;
+  left: 12px;
+  font-size: 15px;
+  color: #64748b;
+  pointer-events: none;
+}
+
+.scl-input {
+  width: 100%;
+  padding: 11px 40px 11px 38px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.scl-input:focus {
+  border-color: #6366f1;
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.scl-password-toggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #94a3b8;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.scl-options-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.scl-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.scl-checkbox-label input {
+  accent-color: #6366f1;
+}
+
+.scl-submit-btn {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.35);
+  transition: all 0.2s ease;
+}
+
+.scl-submit-btn:hover:not(:disabled) {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.scl-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.scl-footer-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+}
+
+.scl-footer-link {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.scl-footer-link:hover {
+  color: #c7d2fe;
+}
+
+.scl-footer-sep {
+  color: #475569;
+}

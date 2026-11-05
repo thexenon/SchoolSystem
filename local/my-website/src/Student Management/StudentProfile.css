@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+.sprof-header-banner {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.15) 0%, rgba(14, 165, 233, 0.1) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 18px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.sprof-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.45);
+}
+
+.sprof-tabs {
+  display: flex;
+  gap: 8px;
+  background: rgba(18, 25, 41, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 6px;
+  margin-bottom: 24px;
+  width: fit-content;
+  flex-wrap: wrap;
+}
+
+.sprof-tab {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sprof-tab:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.sprof-tab.active {
+  background: #4f46e5;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+}

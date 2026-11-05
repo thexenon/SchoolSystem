@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./PlatformDashboard.css";
+import {
+  getSchoolAdmins,
+  switchActiveSchool,
+} from "./schoolAdminAuth";
 
 const ACTIVITY_LOG = [
   {
@@ -57,6 +61,9 @@ const ACTIVITY_LOG = [
 
 function PlatformDashboard({ onNavigate, onLogout }) {
   const [timeframe, setTimeframe] = useState("30d");
+  const [selectedAdminModal, setSelectedAdminModal] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const schoolAdmins = getSchoolAdmins();
 
   const navigateTo = (screen) => {
     if (onNavigate) {
@@ -74,6 +81,17 @@ function PlatformDashboard({ onNavigate, onLogout }) {
     }
   };
 
+  // Direct access handlers for Multi-School Admin
+  const handleAccessSchoolDashboard = (schoolId) => {
+    switchActiveSchool(schoolId);
+    navigateTo("school-dashboard");
+  };
+
+  const handleAccessSchoolStudents = (schoolId) => {
+    switchActiveSchool(schoolId);
+    navigateTo("student-list");
+  };
+
   return (
     <div className="pd-wrapper">
       {/* Platform Top Navigation Bar */}
@@ -82,7 +100,7 @@ function PlatformDashboard({ onNavigate, onLogout }) {
           <div className="platform-logo-badge">SMS</div>
           <div>
             <div className="platform-brand-text">Multi-School Platform Administration</div>
-            <div className="platform-brand-sub">Tenant Management & Global Operations</div>
+            <div className="platform-brand-sub">Tenant Management & Global Operations (Overall Boss)</div>
           </div>
         </div>
 
@@ -132,8 +150,17 @@ function PlatformDashboard({ onNavigate, onLogout }) {
         </div>
 
         <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+          <button
+            type="button"
+            className="platform-menu-item"
+            style={{ background: "rgba(234, 179, 8, 0.15)", color: "#fde047", border: "1px solid rgba(234, 179, 8, 0.3)" }}
+            onClick={() => handleAccessSchoolDashboard("SCH-001")}
+            title="Open School Administration Dashboard directly as Platform Boss"
+          >
+            🏫 Enter School Dashboard →
+          </button>
           <Link to="/" className="platform-back-link">
-            ← School Hub
+            ← Hub
           </Link>
           <button
             type="button"
@@ -149,9 +176,9 @@ function PlatformDashboard({ onNavigate, onLogout }) {
       {/* Main Header */}
       <div className="pd-header">
         <div>
-          <h1 className="pd-title">Platform Overview</h1>
+          <h1 className="pd-title">Platform Overview & Supervision</h1>
           <p className="pd-subtitle">
-            Global metrics, multi-school tenant activity, and cloud infrastructure operations
+            Universal authority: Access each individual school's dashboard, enrolled students, and administrator credentials
           </p>
         </div>
 
@@ -184,7 +211,6 @@ function PlatformDashboard({ onNavigate, onLogout }) {
 
       {/* 4 Stat Cards */}
       <div className="pd-stats-grid">
-        {/* Card 1: Schools */}
         <div className="pd-stat-card" onClick={() => navigateTo("school-management")}>
           <div className="pd-stat-header">
             <span className="pd-stat-label">Registered Schools</span>
@@ -198,7 +224,6 @@ function PlatformDashboard({ onNavigate, onLogout }) {
           </div>
         </div>
 
-        {/* Card 2: Total Users */}
         <div className="pd-stat-card" onClick={() => navigateTo("school-management")}>
           <div className="pd-stat-header">
             <span className="pd-stat-label">Total Platform Users</span>
@@ -212,7 +237,6 @@ function PlatformDashboard({ onNavigate, onLogout }) {
           </div>
         </div>
 
-        {/* Card 3: Subscriptions */}
         <div className="pd-stat-card" onClick={() => navigateTo("subscription-management")}>
           <div className="pd-stat-header">
             <span className="pd-stat-label">Active Subscriptions</span>
@@ -226,7 +250,6 @@ function PlatformDashboard({ onNavigate, onLogout }) {
           </div>
         </div>
 
-        {/* Card 4: Platform Staff */}
         <div className="pd-stat-card" onClick={() => navigateTo("platform-user-management")}>
           <div className="pd-stat-header">
             <span className="pd-stat-label">Platform Operators</span>
@@ -238,6 +261,119 @@ function PlatformDashboard({ onNavigate, onLogout }) {
           <div className="pd-stat-sub">
             <span>6 Super Admins • 12 Support • 6 DevOps</span>
           </div>
+        </div>
+      </div>
+
+      {/* MULTI-SCHOOL DIRECT ACCESS & SUPERVISION SECTION */}
+      <div className="pd-card" style={{ marginBottom: "28px" }}>
+        <div className="pd-card-header">
+          <div>
+            <div className="pd-card-title">
+              <span>🏫</span> Supervised Schools & Direct Portal Access
+            </div>
+            <p style={{ margin: "4px 0 0", fontSize: "12px", color: "#94a3b8" }}>
+              As the Multi-School Admin (Overall Boss), click any school below to instantly enter its dashboard, view its enrolled students, or inspect its administrator details.
+            </p>
+          </div>
+          <button
+            type="button"
+            className="sm-btn sm-btn-secondary"
+            onClick={() => navigateTo("school-management")}
+          >
+            Manage All 48 Schools →
+          </button>
+        </div>
+
+        <div style={{ overflowX: "auto" }}>
+          <table className="sch-table">
+            <thead>
+              <tr>
+                <th>School Code & Name</th>
+                <th>Head Administrator</th>
+                <th>Administrator Email</th>
+                <th>Campuses & Enrolled</th>
+                <th>Status</th>
+                <th style={{ textAlign: "right" }}>Direct Boss Access</th>
+              </tr>
+            </thead>
+            <tbody>
+              {schoolAdmins.map((admin) => (
+                <tr key={admin.id}>
+                  <td>
+                    <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                      <div
+                        style={{
+                          width: "36px",
+                          height: "36px",
+                          borderRadius: "8px",
+                          background: "linear-gradient(135deg, #6366f1 0%, #3b82f6 100%)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontWeight: 800,
+                          fontSize: "13px",
+                          color: "#ffffff",
+                        }}
+                      >
+                        {admin.schoolCode.substring(0, 2)}
+                      </div>
+                      <div>
+                        <div style={{ fontWeight: 700, color: "#ffffff" }}>{admin.schoolName}</div>
+                        <div style={{ fontSize: "11px", color: "#818cf8" }}>{admin.schoolId} • {admin.schoolCode}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div style={{ fontWeight: 600, color: "#f8fafc" }}>{admin.adminName}</div>
+                    <div style={{ fontSize: "11px", color: "#94a3b8" }}>{admin.adminTitle}</div>
+                  </td>
+                  <td>
+                    <span style={{ fontSize: "13px", color: "#38bdf8" }}>{admin.email}</span>
+                  </td>
+                  <td>
+                    <div><strong>{admin.studentCount?.toLocaleString() || "2,500"}</strong> Students</div>
+                    <div style={{ fontSize: "11px", color: "#94a3b8" }}>{admin.campusesCount || 1} Campuses • {admin.facultyCount || 100} Faculty</div>
+                  </td>
+                  <td>
+                    <span className={`sch-badge ${admin.status === "Active" ? "sch-badge-success" : "sch-badge-danger"}`}>
+                      {admin.status}
+                    </span>
+                  </td>
+                  <td style={{ textAlign: "right" }}>
+                    <div style={{ display: "inline-flex", gap: "6px" }}>
+                      <button
+                        type="button"
+                        className="sm-btn sm-btn-primary"
+                        style={{ padding: "6px 12px", fontSize: "12px", background: "linear-gradient(135deg, #4f46e5 0%, #4338ca 100%)" }}
+                        onClick={() => handleAccessSchoolDashboard(admin.schoolId)}
+                        title={`Open ${admin.schoolName} operational dashboard`}
+                      >
+                        📊 Dashboard
+                      </button>
+                      <button
+                        type="button"
+                        className="sm-btn sm-btn-secondary"
+                        style={{ padding: "6px 12px", fontSize: "12px" }}
+                        onClick={() => handleAccessSchoolStudents(admin.schoolId)}
+                        title={`View students enrolled in ${admin.schoolName}`}
+                      >
+                        🎓 Students
+                      </button>
+                      <button
+                        type="button"
+                        className="sm-btn sm-btn-secondary"
+                        style={{ padding: "6px 10px", fontSize: "12px" }}
+                        onClick={() => setSelectedAdminModal(admin)}
+                        title={`Inspect administrator profile and credentials for ${admin.schoolName}`}
+                      >
+                        🛡️ Admin Info
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -374,6 +510,129 @@ function PlatformDashboard({ onNavigate, onLogout }) {
           </div>
         </div>
       </div>
+
+      {/* ADMINISTRATOR DETAILS MODAL */}
+      {selectedAdminModal && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 1000,
+            padding: "20px",
+            backdropFilter: "blur(6px)",
+          }}
+          onClick={() => setSelectedAdminModal(null)}
+        >
+          <div
+            style={{
+              background: "#0f172a",
+              border: "1px solid rgba(99, 102, 241, 0.35)",
+              borderRadius: "16px",
+              padding: "26px",
+              maxWidth: "560px",
+              width: "100%",
+              boxShadow: "0 20px 50px rgba(0,0,0,0.6)",
+              color: "#f8fafc",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
+              <div>
+                <span className="sch-badge sch-badge-warning" style={{ fontSize: "11px", marginBottom: "6px" }}>
+                  👑 Platform Boss Supervision View
+                </span>
+                <h2 style={{ margin: "4px 0 0", fontSize: "20px", fontWeight: 800 }}>
+                  {selectedAdminModal.adminName}
+                </h2>
+                <div style={{ fontSize: "13px", color: "#94a3b8" }}>
+                  {selectedAdminModal.adminTitle} • {selectedAdminModal.schoolName}
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedAdminModal(null)}
+                style={{ background: "none", border: "none", color: "#94a3b8", fontSize: "22px", cursor: "pointer" }}
+              >
+                ✕
+              </button>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "20px" }}>
+              <div style={{ background: "rgba(255,255,255,0.04)", padding: "10px 14px", borderRadius: "8px" }}>
+                <div style={{ fontSize: "11px", color: "#94a3b8" }}>OFFICIAL EMAIL</div>
+                <div style={{ fontSize: "13px", color: "#38bdf8", fontWeight: 600 }}>{selectedAdminModal.email}</div>
+              </div>
+
+              <div style={{ background: "rgba(255,255,255,0.04)", padding: "10px 14px", borderRadius: "8px" }}>
+                <div style={{ fontSize: "11px", color: "#94a3b8", display: "flex", justifyContent: "space-between" }}>
+                  <span>SCHOOL PASSWORD</span>
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    style={{ background: "none", border: "none", color: "#a5b4fc", cursor: "pointer", fontSize: "11px" }}
+                  >
+                    {showPassword ? "Hide" : "Show"}
+                  </button>
+                </div>
+                <div style={{ fontSize: "13px", color: "#34d399", fontWeight: 700, fontFamily: "JetBrains Mono, monospace" }}>
+                  {showPassword ? selectedAdminModal.password : "••••••••••••"}
+                </div>
+              </div>
+
+              <div style={{ background: "rgba(255,255,255,0.04)", padding: "10px 14px", borderRadius: "8px" }}>
+                <div style={{ fontSize: "11px", color: "#94a3b8" }}>DIRECT PHONE</div>
+                <div style={{ fontSize: "13px" }}>{selectedAdminModal.phone || "+1 (555) 019-2831"}</div>
+              </div>
+
+              <div style={{ background: "rgba(255,255,255,0.04)", padding: "10px 14px", borderRadius: "8px" }}>
+                <div style={{ fontSize: "11px", color: "#94a3b8" }}>STATUS</div>
+                <div style={{ fontSize: "13px", fontWeight: 700, color: selectedAdminModal.status === "Active" ? "#34d399" : "#f87171" }}>
+                  {selectedAdminModal.status}
+                </div>
+              </div>
+            </div>
+
+            <div style={{ fontSize: "13px", color: "#cbd5e1", lineHeight: 1.5, marginBottom: "20px", background: "rgba(255,255,255,0.02)", padding: "12px", borderRadius: "8px" }}>
+              <strong>Trustee Bio:</strong> {selectedAdminModal.bio || "School executive administrator."}
+            </div>
+
+            <div style={{ display: "flex", justifyContent: "flex-end", gap: "10px" }}>
+              <button
+                type="button"
+                className="sm-btn sm-btn-secondary"
+                onClick={() => setSelectedAdminModal(null)}
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                className="sm-btn sm-btn-secondary"
+                onClick={() => {
+                  handleAccessSchoolStudents(selectedAdminModal.schoolId);
+                }}
+              >
+                🎓 View Students
+              </button>
+              <button
+                type="button"
+                className="sm-btn sm-btn-primary"
+                onClick={() => {
+                  handleAccessSchoolDashboard(selectedAdminModal.schoolId);
+                }}
+              >
+                📊 Enter School Dashboard →
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

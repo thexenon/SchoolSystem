@@ -1,5 +1,6 @@
 // Multi-School Platform Administration - School Admin Credentials Service
-// The Multi-School Admin is the overall boss who provisions, manages, and generates logins for all school administrators.
+// The Multi-School Admin is the overall boss who provisions, manages, and generates logins for all school administrators,
+// and can directly access any individual school's dashboard, students, and administrator information.
 
 export const INITIAL_SCHOOL_ADMINS = [
   {
@@ -7,13 +8,22 @@ export const INITIAL_SCHOOL_ADMINS = [
     schoolId: "SCH-001",
     schoolName: "St. Mary International Academy",
     schoolCode: "SMIA",
-    adminName: "Eleanor Vance",
-    adminTitle: "Head Principal",
+    adminName: "Dame Eleanor Vance, Ph.D.",
+    adminTitle: "Head Principal & Executive Trustee",
     email: "admin@stmarys.edu",
     password: "StMary@Admin2026",
+    phone: "+44 20 7946 0912",
+    city: "London",
+    country: "United Kingdom",
     status: "Active",
     createdAt: "Jan 14, 2024",
     lastLogin: "Today, 08:30 AM",
+    campusesCount: 3,
+    studentCount: 3400,
+    facultyCount: 220,
+    securityClearance: "Tier 1 - Full Trustee Level",
+    deputyName: "Dr. Arthur Bell (Vice Principal)",
+    bio: "Dame Eleanor has led St. Mary for 9 years, supervising three campuses across London with IB World accreditation.",
   },
   {
     id: "SADM-002",
@@ -21,25 +31,43 @@ export const INITIAL_SCHOOL_ADMINS = [
     schoolName: "Oakridge High School",
     schoolCode: "OHS",
     adminName: "Dr. Jonathan Hayes",
-    adminTitle: "Executive Director",
+    adminTitle: "Executive Director of Academics",
     email: "admin@oakridge.edu",
     password: "Oakridge@Admin2026",
+    phone: "+1 (416) 555-0199",
+    city: "Toronto",
+    country: "Canada",
     status: "Active",
     createdAt: "Mar 22, 2024",
     lastLogin: "Yesterday, 02:15 PM",
+    campusesCount: 2,
+    studentCount: 2850,
+    facultyCount: 180,
+    securityClearance: "Tier 1 - Full Trustee Level",
+    deputyName: "Mrs. Clara Oswald (Academic Dean)",
+    bio: "Dr. Hayes oversees Oakridge's Bay Street and Yorkville campuses, managing the Ontario Curriculum and AP Capstone programs.",
   },
   {
     id: "SADM-003",
     schoolId: "SCH-003",
     schoolName: "Greenwood Preparatory",
     schoolCode: "GWP",
-    adminName: "Harrison Sterling",
+    adminName: "Harrison Sterling, M.Ed.",
     adminTitle: "Headmaster",
     email: "admin@greenwood.edu",
     password: "Greenwood@Admin2026",
+    phone: "+1 (512) 555-8321",
+    city: "Austin, TX",
+    country: "United States",
     status: "Active",
     createdAt: "Aug 05, 2024",
     lastLogin: "2 days ago",
+    campusesCount: 1,
+    studentCount: 1420,
+    facultyCount: 95,
+    securityClearance: "Tier 1 - Headmaster Level",
+    deputyName: "Diana Prince (Dean of Students)",
+    bio: "Harrison Sterling has directed Greenwood Preparatory through STEM and arts integration under SACS accreditation.",
   },
   {
     id: "SADM-004",
@@ -50,9 +78,18 @@ export const INITIAL_SCHOOL_ADMINS = [
     adminTitle: "Academic Dean",
     email: "admin@horizon.edu",
     password: "Horizon@Admin2026",
+    phone: "+61 3 9840 2200",
+    city: "Melbourne",
+    country: "Australia",
     status: "Suspended",
     createdAt: "Nov 19, 2024",
     lastLogin: "14 days ago",
+    campusesCount: 1,
+    studentCount: 980,
+    facultyCount: 68,
+    securityClearance: "Tier 2 - Dean Level (Under Audit Review)",
+    deputyName: "Samantha Reed (Acting Dean)",
+    bio: "Horizon Collegiate Institute is currently undergoing platform financial audit reconciliation.",
   },
   {
     id: "SADM-005",
@@ -63,9 +100,18 @@ export const INITIAL_SCHOOL_ADMINS = [
     adminTitle: "Headmistress",
     email: "admin@beaconhill.edu",
     password: "BeaconHill@Admin2026",
+    phone: "+1 (617) 555-4920",
+    city: "Boston, MA",
+    country: "United States",
     status: "Active",
     createdAt: "Oct 02, 2026",
     lastLogin: "Never",
+    campusesCount: 1,
+    studentCount: 420,
+    facultyCount: 32,
+    securityClearance: "Tier 1 - Headmistress Level",
+    deputyName: "Robert Langdon (Senior Master)",
+    bio: "Beacon Hill is an historic preparatory institution currently piloting the digital School Hub platform.",
   },
   {
     id: "SADM-006",
@@ -76,14 +122,25 @@ export const INITIAL_SCHOOL_ADMINS = [
     adminTitle: "College Provost",
     email: "admin@stjude.ie",
     password: "StJude@Admin2026",
+    phone: "+353 1 496 0888",
+    city: "Dublin",
+    country: "Ireland",
     status: "Active",
     createdAt: "Feb 10, 2023",
     lastLogin: "Oct 24, 2026",
+    campusesCount: 4,
+    studentCount: 4100,
+    facultyCount: 290,
+    securityClearance: "Tier 1 - Provost Level",
+    deputyName: "Dr. Margaret Hamilton (Dean of Technology)",
+    bio: "St. Jude Technical College leads tertiary vocational and polytechnic education across 4 regional campuses in Ireland.",
   },
 ];
 
 const STORAGE_KEY = "platform_school_admins";
 const ACTIVE_ADMIN_KEY = "active_school_admin";
+const SCHOOL_AUTH_KEY = "school_admin_auth";
+const PLATFORM_AUTH_KEY = "platform_admin_auth";
 
 /**
  * Retrieve all registered school admins from localStorage or initial defaults
@@ -115,6 +172,55 @@ export function saveSchoolAdmins(admins) {
 }
 
 /**
+ * Find admin record by schoolId
+ */
+export function getSchoolAdminBySchoolId(schoolId) {
+  const admins = getSchoolAdmins();
+  return (
+    admins.find((a) => a.schoolId === schoolId) ||
+    admins.find((a) => a.id === schoolId) ||
+    admins[0]
+  );
+}
+
+/**
+ * Check if the Multi-School Platform Super Admin (Overall Boss) is logged in
+ */
+export function isPlatformAdminAuthenticated() {
+  return (
+    localStorage.getItem(PLATFORM_AUTH_KEY) === "true" ||
+    sessionStorage.getItem(PLATFORM_AUTH_KEY) === "true"
+  );
+}
+
+/**
+ * Check if School Administration session is authenticated.
+ * Note: If the Multi-School Platform Super Admin is logged in, they automatically have access!
+ */
+export function isSchoolAdminAuthenticated() {
+  if (isPlatformAdminAuthenticated()) {
+    return true;
+  }
+  return (
+    localStorage.getItem(SCHOOL_AUTH_KEY) === "true" ||
+    sessionStorage.getItem(SCHOOL_AUTH_KEY) === "true"
+  );
+}
+
+/**
+ * Switch active school context (Used by Multi-School Admin or upon login)
+ */
+export function switchActiveSchool(schoolId) {
+  const admin = getSchoolAdminBySchoolId(schoolId);
+  if (admin) {
+    setActiveSchoolAdmin(admin);
+    localStorage.setItem(SCHOOL_AUTH_KEY, "true");
+    return admin;
+  }
+  return null;
+}
+
+/**
  * Generate a new school admin credential set
  */
 export function generateSchoolAdminLogin({
@@ -128,7 +234,6 @@ export function generateSchoolAdminLogin({
 }) {
   const admins = getSchoolAdmins();
 
-  // Create clean domain slug from school name
   const cleanDomain =
     schoolCode?.toLowerCase().replace(/[^a-z0-9]/g, "") ||
     schoolName.toLowerCase().replace(/[^a-z0-9]/g, "").substring(0, 8);
@@ -137,7 +242,6 @@ export function generateSchoolAdminLogin({
     customEmail.trim() ||
     `admin@${cleanDomain}.edu`;
 
-  // Create school-based password
   const cleanPrefix =
     schoolName.split(" ")[0].replace(/[^a-zA-Z]/g, "") ||
     schoolCode ||
@@ -155,6 +259,9 @@ export function generateSchoolAdminLogin({
     adminTitle,
     email: finalEmail.toLowerCase(),
     password: finalPassword,
+    phone: "+1 (555) 010-0900",
+    city: "Headquarters",
+    country: "International",
     status: "Active",
     createdAt: new Date().toLocaleDateString("en-US", {
       month: "short",
@@ -162,6 +269,12 @@ export function generateSchoolAdminLogin({
       year: "numeric",
     }),
     lastLogin: "Never",
+    campusesCount: 1,
+    studentCount: 500,
+    facultyCount: 40,
+    securityClearance: "Tier 1 - School Admin Level",
+    deputyName: "Deputy Administrator",
+    bio: `Newly provisioned school administrator account for ${schoolName}.`,
   };
 
   const updated = [newAdmin, ...admins];
@@ -177,7 +290,7 @@ export function regenerateSchoolAdminPassword(adminId, customNewPassword = "") {
   let updatedAdmin = null;
 
   const updated = admins.map((a) => {
-    if (a.id === adminId) {
+    if (a.id === adminId || a.schoolId === adminId) {
       const cleanPrefix = a.schoolName.split(" ")[0].replace(/[^a-zA-Z]/g, "");
       const newPass =
         customNewPassword.trim() ||
@@ -190,35 +303,65 @@ export function regenerateSchoolAdminPassword(adminId, customNewPassword = "") {
 
   if (updatedAdmin) {
     saveSchoolAdmins(updated);
+    // If currently active admin was modified, update active admin in storage
+    const currentActive = getActiveSchoolAdmin();
+    if (currentActive && (currentActive.id === adminId || currentActive.schoolId === adminId)) {
+      setActiveSchoolAdmin(updatedAdmin);
+    }
   }
   return updatedAdmin;
 }
 
 /**
- * Authenticate a school admin against stored school credentials
+ * Authenticate a school admin against stored school credentials OR Platform Boss master credentials
  */
 export function authenticateSchoolAdmin(inputEmail, inputPassword) {
-  const admins = getSchoolAdmins();
   const emailNorm = inputEmail.trim().toLowerCase();
   const passNorm = inputPassword.trim();
 
+  // 1. Check if authenticated as Multi-School Super Admin (Platform Boss)
+  if (
+    emailNorm === "admin@platform.schoolhub.net" ||
+    emailNorm === "platform" ||
+    emailNorm.includes("platform") ||
+    passNorm === "Platform@2026"
+  ) {
+    if (passNorm === "Platform@2026" || passNorm === "Admin@2026") {
+      localStorage.setItem(PLATFORM_AUTH_KEY, "true");
+      localStorage.setItem(SCHOOL_AUTH_KEY, "true");
+      // Default active school to St. Mary International Academy if not already set
+      if (!getActiveSchoolAdmin()) {
+        const defaultAdmin = getSchoolAdmins()[0];
+        setActiveSchoolAdmin(defaultAdmin);
+      }
+      return {
+        success: true,
+        isPlatformBoss: true,
+        admin: getActiveSchoolAdmin() || getSchoolAdmins()[0],
+        message: "Multi-School Super Admin authenticated! Full multi-school access granted.",
+      };
+    }
+  }
+
+  // 2. Check against registered school admins
+  const admins = getSchoolAdmins();
   const found = admins.find(
     (a) => a.email.toLowerCase() === emailNorm && a.password === passNorm
   );
 
   if (found) {
-    // Record login timestamp
     const updated = admins.map((a) =>
       a.id === found.id ? { ...a, lastLogin: "Just now" } : a
     );
     saveSchoolAdmins(updated);
     setActiveSchoolAdmin(found);
-    return { success: true, admin: found };
+    localStorage.setItem(SCHOOL_AUTH_KEY, "true");
+    return { success: true, isPlatformBoss: false, admin: found };
   }
 
-  // Also check legacy/default single-school fallback
+  // 3. Fallback check for default single-school test account
   if (emailNorm === "admin@school.edu" && passNorm === "Admin@2026") {
-    const defaultFallback = {
+    const defaultFallback = admins[0] || {
       id: "SADM-DEFAULT",
       schoolId: "SCH-001",
       schoolName: "St. Mary International Academy",
@@ -230,19 +373,22 @@ export function authenticateSchoolAdmin(inputEmail, inputPassword) {
       status: "Active",
     };
     setActiveSchoolAdmin(defaultFallback);
-    return { success: true, admin: defaultFallback };
+    localStorage.setItem(SCHOOL_AUTH_KEY, "true");
+    return { success: true, isPlatformBoss: false, admin: defaultFallback };
   }
 
-  return { success: false, admin: null };
+  return { success: false, isPlatformBoss: false, admin: null };
 }
 
 /**
- * Get active school admin
+ * Get active school admin from storage, or fallback to first school admin
  */
 export function getActiveSchoolAdmin() {
   try {
     const raw = localStorage.getItem(ACTIVE_ADMIN_KEY);
-    return raw ? JSON.parse(raw) : null;
+    if (raw) return JSON.parse(raw);
+    const admins = getSchoolAdmins();
+    return admins[0] || null;
   } catch (err) {
     return null;
   }
@@ -260,12 +406,18 @@ export function setActiveSchoolAdmin(admin) {
 }
 
 /**
- * Clear active school admin
+ * Clear active school admin & log out of school administration
  */
-export function clearActiveSchoolAdmin() {
+export function logoutSchoolAdmin() {
   try {
+    localStorage.removeItem(SCHOOL_AUTH_KEY);
+    sessionStorage.removeItem(SCHOOL_AUTH_KEY);
     localStorage.removeItem(ACTIVE_ADMIN_KEY);
   } catch (err) {
-    console.error("Error clearing active school admin:", err);
+    console.error("Error clearing school admin session:", err);
   }
+}
+
+export function clearActiveSchoolAdmin() {
+  logoutSchoolAdmin();
 }

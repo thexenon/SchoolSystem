@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+.sp-card {
+  background: rgba(18, 25, 41, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 28px;
+  backdrop-filter: blur(12px);
+  margin-bottom: 24px;
+}
+
+.sp-banner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.sp-logo-preview {
+  width: 90px;
+  height: 90px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  font-weight: 800;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.45);
+  flex-shrink: 0;
+}
+
+.sp-logo-upload-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  color: #c7d2fe;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+.sp-logo-upload-btn:hover {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: #6366f1;
+  color: #ffffff;
+}
+
+.sp-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .sp-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sp-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sp-form-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sp-form-input {
+  background: rgba(11, 16, 28, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #f1f5f9;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.sp-form-input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25);
+}
+
+.sp-section-heading {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}

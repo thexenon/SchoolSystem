@@ -197,11 +197,14 @@ function Homepage() {
           <Link to="/login" className="hub-action-btn hub-action-primary">
             <span>🔐</span> Access School Portal Login
           </Link>
+          <Link to="/school-dashboard" className="hub-action-btn hub-action-secondary">
+            <span>🏫</span> School Administration
+          </Link>
           <Link to="/platform-dashboard" className="hub-action-btn hub-action-secondary">
             <span>🌐</span> Multi-School Platform Admin
           </Link>
           <Link to="/notifications" className="hub-action-btn hub-action-secondary">
-            <span>🔔</span> View School Announcements
+            <span>🔔</span> View Announcements
           </Link>
         </div>
       </div>

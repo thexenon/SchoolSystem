@@ -293,6 +293,14 @@ Security: Must change password upon first sign-in
             <button
               type="button"
               className="sms-btn sms-btn-secondary"
+              onClick={() => onNavigate && onNavigate("school-dashboard")}
+              title="Open School Administration (Dashboard, Campuses, Terms, Calendar)"
+            >
+              🏫 School Admin Portal →
+            </button>
+            <button
+              type="button"
+              className="sms-btn sms-btn-secondary"
               onClick={() => onNavigate && onNavigate("platform-dashboard")}
               title="Open Multi-School Platform Administration (Overall Boss)"
             >

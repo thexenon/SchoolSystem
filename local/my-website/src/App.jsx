@@ -19,12 +19,36 @@ import {
   PlatformUserManagement,
   PlatformAuditLogs,
 } from "./Platform Administration";
+import {
+  SchoolLogin,
+  SchoolDashboard,
+  SchoolProfile,
+  CampusManagement,
+  AcademicYearManagement,
+  TermSemesterManagement,
+  SchoolCalendar,
+  SchoolSettings,
+} from "./School Administration";
+import {
+  StudentList,
+  RegisterStudent,
+  StudentProfile,
+  EditStudent,
+  StudentEnrollment,
+} from "./Student Management";
+import {
+  isSchoolAdminAuthenticated,
+  logoutSchoolAdmin,
+} from "./Platform Administration/schoolAdminAuth";
 
 function ScreenWrapper({ Component }) {
   const navigate = useNavigate();
   return <Component onNavigate={(screen) => navigate(`/${screen}`)} />;
 }
 
+/**
+ * PlatformProtected: Multi-School Platform Super Admin Authentication Guard
+ */
 function PlatformProtected({ Component }) {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
@@ -69,6 +93,48 @@ function PlatformLoginWrapper() {
   );
 }
 
+/**
+ * SchoolProtected: School Administration & Student Management Authentication Guard
+ * Requires school administrator login credentials or Multi-School Platform Super Admin authority.
+ */
+function SchoolProtected({ Component }) {
+  const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return isSchoolAdminAuthenticated();
+  });
+
+  const handleLogout = () => {
+    logoutSchoolAdmin();
+    setIsAuthenticated(false);
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <SchoolLogin
+        onSuccess={() => setIsAuthenticated(true)}
+        onNavigate={(screen) => navigate(`/${screen}`)}
+      />
+    );
+  }
+
+  return (
+    <Component
+      onNavigate={(screen) => navigate(`/${screen}`)}
+      onLogout={handleLogout}
+    />
+  );
+}
+
+function SchoolLoginWrapper() {
+  const navigate = useNavigate();
+  return (
+    <SchoolLogin
+      onSuccess={() => navigate("/school-dashboard")}
+      onNavigate={(screen) => navigate(`/${screen}`)}
+    />
+  );
+}
+
 function App() {
   return (
     <BrowserRouter>
@@ -83,7 +149,7 @@ function App() {
         <Route path="/roles-and-permissions" element={<ScreenWrapper Component={RolesAndPermissions} />} />
         <Route path="/notifications" element={<ScreenWrapper Component={Notifications} />} />
 
-        {/* Platform Administration (Multi-School Management) - Password Protected */}
+        {/* Platform Administration (Multi-School Management) - Password Protected (Overall Boss) */}
         <Route path="/platform-login" element={<PlatformLoginWrapper />} />
         <Route path="/platform-dashboard" element={<PlatformProtected Component={PlatformDashboard} />} />
         <Route path="/school-management" element={<PlatformProtected Component={SchoolManagement} />} />
@@ -91,6 +157,23 @@ function App() {
         <Route path="/subscription-management" element={<PlatformProtected Component={SubscriptionManagement} />} />
         <Route path="/platform-user-management" element={<PlatformProtected Component={PlatformUserManagement} />} />
         <Route path="/platform-audit-logs" element={<PlatformProtected Component={PlatformAuditLogs} />} />
+
+        {/* School Administration Module - Password Protected Gate */}
+        <Route path="/school-login" element={<SchoolLoginWrapper />} />
+        <Route path="/school-dashboard" element={<SchoolProtected Component={SchoolDashboard} />} />
+        <Route path="/school-profile" element={<SchoolProtected Component={SchoolProfile} />} />
+        <Route path="/campus-management" element={<SchoolProtected Component={CampusManagement} />} />
+        <Route path="/academic-year-management" element={<SchoolProtected Component={AcademicYearManagement} />} />
+        <Route path="/term-semester-management" element={<SchoolProtected Component={TermSemesterManagement} />} />
+        <Route path="/school-calendar" element={<SchoolProtected Component={SchoolCalendar} />} />
+        <Route path="/school-settings" element={<SchoolProtected Component={SchoolSettings} />} />
+
+        {/* Student Management Module - Protected Under School & Platform Admin */}
+        <Route path="/student-list" element={<SchoolProtected Component={StudentList} />} />
+        <Route path="/register-student" element={<SchoolProtected Component={RegisterStudent} />} />
+        <Route path="/student-profile" element={<SchoolProtected Component={StudentProfile} />} />
+        <Route path="/edit-student" element={<SchoolProtected Component={EditStudent} />} />
+        <Route path="/student-enrollment" element={<SchoolProtected Component={StudentEnrollment} />} />
       </Routes>
     </BrowserRouter>
   );
