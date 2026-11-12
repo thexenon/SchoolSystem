@@ -1,0 +1,368 @@
+/* SpinningWordsBackground.css */
+.sw-bg-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Ambient colored glows */
+.sw-ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.18;
+  pointer-events: none;
+  animation: orbDrift 24s ease-in-out infinite alternate;
+}
+
+.sw-orb-1 {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, #38bdf8, #6366f1);
+  top: -100px;
+  left: -80px;
+}
+
+.sw-orb-2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #a855f7, #ec4899);
+  bottom: -150px;
+  right: -100px;
+  animation-duration: 28s;
+  animation-delay: -5s;
+}
+
+.sw-orb-3 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, #10b981, #06b6d4);
+  top: 40%;
+  right: 25%;
+  opacity: 0.10;
+  animation-duration: 32s;
+  animation-delay: -10s;
+}
+
+@keyframes orbDrift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(60px, 40px) scale(1.12);
+  }
+  100% {
+    transform: translate(-40px, 80px) scale(0.95);
+  }
+}
+
+/* 3D Perspective Stage */
+.sw-perspective-stage {
+  position: absolute;
+  inset: 0;
+  perspective: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.28;
+  transform-style: preserve-3d;
+}
+
+/* Orbit Rings */
+.sw-orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.sw-orbit-ring-outer {
+  width: 1050px;
+  height: 1050px;
+  border: 1px dashed rgba(56, 189, 248, 0.15);
+  transform: rotateX(68deg) rotateY(-18deg);
+}
+
+.sw-orbit-ring-inner {
+  width: 720px;
+  height: 720px;
+  border: 1px dotted rgba(245, 158, 11, 0.18);
+  transform: rotateX(62deg) rotateY(15deg);
+}
+
+.sw-orbit-track {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.sw-track-clockwise {
+  animation: spinClockwise 45s linear infinite;
+}
+
+.sw-track-counter {
+  animation: spinCounterClockwise 32s linear infinite;
+}
+
+@keyframes spinClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinCounterClockwise {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* Speed Modifiers */
+.speed-slow .sw-track-clockwise {
+  animation-duration: 75s;
+}
+.speed-slow .sw-track-counter {
+  animation-duration: 55s;
+}
+
+.speed-normal .sw-track-clockwise {
+  animation-duration: 45s;
+}
+.speed-normal .sw-track-counter {
+  animation-duration: 32s;
+}
+
+.speed-fast .sw-track-clockwise {
+  animation-duration: 18s;
+}
+.speed-fast .sw-track-counter {
+  animation-duration: 14s;
+}
+
+.speed-paused .sw-track-clockwise,
+.speed-paused .sw-track-counter,
+.speed-paused .sw-ribbon-scroll,
+.speed-paused .sw-floating-chip {
+  animation-play-state: paused !important;
+}
+
+/* Orbit Words */
+.sw-orbit-word {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sw-word-cyan {
+  color: #38bdf8;
+  text-shadow: 0 0 16px rgba(56, 189, 248, 0.45);
+}
+
+.sw-word-gold {
+  color: #fbbf24;
+  text-shadow: 0 0 16px rgba(251, 191, 36, 0.45);
+}
+
+.sw-word-dot {
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+/* Diagonal Rotating Ribbons */
+.sw-ribbon {
+  position: absolute;
+  width: 160%;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  opacity: 0.16;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.35em;
+  color: #c084fc;
+  background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.08), transparent);
+}
+
+.sw-ribbon-left {
+  top: 25%;
+  transform: rotate(-16deg);
+}
+
+.sw-ribbon-right {
+  bottom: 25%;
+  transform: rotate(14deg);
+}
+
+.sw-ribbon-scroll {
+  display: flex;
+  white-space: nowrap;
+  animation: scrollRibbon 35s linear infinite;
+}
+
+.sw-ribbon-reverse {
+  animation: scrollRibbonReverse 40s linear infinite;
+}
+
+@keyframes scrollRibbon {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRibbonReverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Floating Layer */
+.sw-floating-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sw-floating-chip {
+  position: absolute;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(8px);
+  animation: floatDrift ease-in-out infinite alternate;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  opacity: 0.7;
+}
+
+@keyframes floatDrift {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-24px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(18px) rotate(-2deg);
+  }
+}
+
+/* Speed Pill Control */
+.sw-speed-pill {
+  position: fixed;
+  bottom: 22px;
+  left: 22px;
+  z-index: 999;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  backdrop-filter: blur(14px);
+  padding: 6px 12px;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  transition: all 0.2s ease;
+}
+
+.sw-speed-pill:hover {
+  border-color: #38bdf8;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(56, 189, 248, 0.25);
+}
+
+.sw-pill-btn {
+  background: transparent;
+  border: none;
+  color: #e2e8f0;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 4px;
+}
+
+.sw-pill-badge {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.sw-pause-btn {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sw-pause-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.sw-pause-btn.active {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+}
+
+@media (max-width: 768px) {
+  .sw-speed-pill {
+    bottom: 12px;
+    left: 12px;
+    padding: 4px 8px;
+  }
+  .sw-orbit-ring-outer {
+    width: 650px;
+    height: 650px;
+  }
+  .sw-orbit-ring-inner {
+    width: 440px;
+    height: 440px;
+  }
+}

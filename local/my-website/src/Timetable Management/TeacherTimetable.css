@@ -1,0 +1,317 @@
+/* TeacherTimetable.css */
+
+.tt-page-container {
+  min-height: 100vh;
+  background: radial-gradient(circle at 10% 20%, rgba(20, 24, 40, 0.95), rgba(10, 12, 22, 1));
+  color: #f1f5f9;
+  padding: 24px 32px 64px 32px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Header */
+.tt-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.tt-header-title-box {
+  max-width: 680px;
+}
+
+.tt-header-tag {
+  display: inline-block;
+  background: rgba(6, 182, 212, 0.15);
+  color: #38bdf8;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  margin-bottom: 8px;
+}
+
+.tt-page-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.4px;
+}
+
+.tt-page-subtitle {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.tt-header-actions-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tt-teacher-dropdown-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tt-teacher-dropdown-box label {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.tt-teacher-select {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+}
+
+.tt-btn-print-action {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.tt-btn-print-action:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Workload Grid */
+.tt-workload-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.tt-workload-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  backdrop-filter: blur(10px);
+}
+
+.tt-card-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.tt-card-label {
+  font-size: 0.76rem;
+  color: #94a3b8;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tt-card-val {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2px;
+}
+
+.tt-card-sub {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: #64748b;
+  display: block;
+}
+
+/* Grid Table Card */
+.tt-grid-card {
+  background: rgba(18, 24, 38, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.tt-grid-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tt-grid-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.tt-grid-table th {
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #94a3b8;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.tt-th-period {
+  width: 150px;
+  text-align: left;
+}
+
+.tt-th-weekday {
+  text-align: center;
+}
+
+.tt-grid-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: middle;
+}
+
+.tt-cell-period-meta {
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.tt-pm-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+.tt-pm-time {
+  font-family: monospace;
+  font-size: 0.76rem;
+  color: #64748b;
+  margin-top: 3px;
+}
+
+.tt-cell-lesson-slot {
+  padding: 8px;
+  height: 96px;
+}
+
+.tt-teacher-slot-tile {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 4px solid #06b6d4;
+  border-radius: 8px;
+  padding: 8px 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+}
+
+.tt-tile-cohort {
+  font-weight: 800;
+  font-size: 0.78rem;
+  color: #38bdf8;
+  letter-spacing: 0.5px;
+}
+
+.tt-tile-subj {
+  font-weight: 700;
+  font-size: 0.86rem;
+  color: #ffffff;
+}
+
+.tt-tile-room {
+  font-size: 0.72rem;
+  color: #94a3b8;
+}
+
+.tt-tile-free {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  color: #475569;
+  font-style: italic;
+}
+
+/* Recess Row */
+.tt-row-recess {
+  background: rgba(245, 158, 11, 0.04);
+}
+
+.tt-td-recess-time {
+  padding: 10px 16px;
+  font-family: monospace;
+  font-size: 0.78rem;
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.tt-td-recess-label {
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fbbf24;
+}
+
+/* Print */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .tt-page-header, .tt-page-header *, .tt-grid-card, .tt-grid-card * {
+    visibility: visible;
+  }
+  .tt-page-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  .tt-grid-card {
+    position: fixed;
+    top: 90px;
+    left: 0;
+    right: 0;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .tt-btn-print-action, .tt-teacher-dropdown-box {
+    display: none !important;
+  }
+}

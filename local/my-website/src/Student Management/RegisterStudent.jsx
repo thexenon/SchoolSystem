@@ -66,7 +66,7 @@ function RegisterStudent({ onNavigate }) {
       gpa: "0.00 (New)",
       attendancePct: 100,
       feesStatus: "Pending",
-      feesBalance: "$3,450.00",
+      feesBalance: "GH₵3,450.00",
       email: generatedEmail,
       phone: form.guardianPhone || "+44 7700 900000",
       address: form.address || "London, United Kingdom",

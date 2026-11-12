@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./homepage.css";
+import SpinningWordsBackground from "./components/SpinningWordsBackground";
 
 // Import all screenshots and assets from assets directory
 import slide1 from "./assets/Screenshot From 2026-10-13 06-35-25.png";
@@ -93,6 +94,9 @@ function Homepage() {
 
   return (
     <div className="hub-container">
+      {/* Interactive 3D Spinning Words Aura */}
+      <SpinningWordsBackground speed="slow" showControlBadge={true} />
+
       {/* Ambient background glows */}
       <div className="hub-blob-1" />
       <div className="hub-blob-2" />
@@ -195,16 +199,19 @@ function Homepage() {
         {/* Quick Portal Access Bar */}
         <div className="hub-actions">
           <Link to="/login" className="hub-action-btn hub-action-primary">
-            <span>🔐</span> Access School Portal Login
+            <span>🔐</span> Portal Sign In
+          </Link>
+          <Link to="/student-portal" className="hub-action-btn hub-action-secondary">
+            <span>🎓</span> Student Portal
+          </Link>
+          <Link to="/teacher-portal" className="hub-action-btn hub-action-secondary">
+            <span>👨‍🏫</span> Teacher & Faculty Portal
           </Link>
           <Link to="/school-dashboard" className="hub-action-btn hub-action-secondary">
             <span>🏫</span> School Administration
           </Link>
           <Link to="/platform-dashboard" className="hub-action-btn hub-action-secondary">
-            <span>🌐</span> Multi-School Platform Admin
-          </Link>
-          <Link to="/notifications" className="hub-action-btn hub-action-secondary">
-            <span>🔔</span> View Announcements
+            <span>🌐</span> Multi-School Admin (Boss)
           </Link>
         </div>
       </div>

@@ -1,0 +1,10 @@
+export { default as EducationLevels } from "./EducationLevels";
+export { default as ClassManagement } from "./ClassManagement";
+export { default as StreamsAndSections } from "./StreamsAndSections";
+export { default as SubjectManagement } from "./SubjectManagement";
+export { default as DepartmentManagement } from "./DepartmentManagement";
+export { default as ProgrammeManagement } from "./ProgrammeManagement";
+export { default as CourseManagement } from "./CourseManagement";
+export { default as ClassAllocation } from "./ClassAllocation";
+export { default as AcademicStructureOverview } from "./AcademicStructureOverview";
+export { default as AcademicNav } from "./AcademicNav";

@@ -1,0 +1,240 @@
+/* MotivationQuoteWidget.css */
+.mq-widget-container {
+  position: relative;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.88));
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: 16px;
+  padding: 18px 24px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  margin-bottom: 24px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.mq-widget-container:hover {
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 14px 40px rgba(56, 189, 248, 0.15);
+}
+
+.mq-compact {
+  padding: 14px 18px;
+  margin-bottom: 16px;
+}
+
+.mq-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.mq-header-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.mq-badge-glow {
+  color: #f59e0b;
+  animation: pulseStar 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulseStar {
+  from {
+    transform: scale(0.9);
+    filter: drop-shadow(0 0 2px #f59e0b);
+  }
+  to {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 8px #fbbf24);
+  }
+}
+
+.mq-tag-pill {
+  background: rgba(14, 165, 233, 0.15);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  color: #7dd3fc;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.mq-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mq-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mq-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.mq-btn-icon {
+  font-size: 16px;
+  padding: 4px 10px;
+  font-weight: 800;
+}
+
+.mq-btn-primary {
+  background: linear-gradient(135deg, #0ea5e9, #6366f1);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+}
+
+.mq-btn-primary:hover {
+  background: linear-gradient(135deg, #0284c7, #4f46e5);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5);
+}
+
+.mq-btn-success {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #6ee7b7;
+}
+
+.mq-btn-speaking {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+  animation: pulseSpeaking 1.5s infinite;
+}
+
+@keyframes pulseSpeaking {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+  }
+}
+
+.mq-body {
+  position: relative;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  padding-left: 28px;
+}
+
+.mq-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mq-fade-out {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.mq-quote-mark {
+  position: absolute;
+  top: -14px;
+  left: 0;
+  font-size: 44px;
+  line-height: 1;
+  color: rgba(56, 189, 248, 0.25);
+  font-family: Georgia, serif;
+  user-select: none;
+}
+
+.mq-quote-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #f8fafc;
+  font-weight: 500;
+  font-style: italic;
+  margin: 0 0 12px;
+}
+
+.mq-compact .mq-quote-text {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.mq-quote-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mq-author-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.mq-author-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.mq-author-role {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.mq-dots-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.mq-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(148, 163, 184, 0.25);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.mq-dot:hover {
+  background: rgba(56, 189, 248, 0.6);
+}
+
+.mq-dot.active {
+  background: #38bdf8;
+  width: 22px;
+  border-radius: 999px;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+}

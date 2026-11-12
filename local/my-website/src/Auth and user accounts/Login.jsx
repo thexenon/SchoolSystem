@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import profile from "../assets/Screenshot From 2026-09-19 18-38-18.png";
 import "./header.css";
+import SpinningWordsBackground from "../components/SpinningWordsBackground";
 import {
   getSchoolAdmins,
   authenticateSchoolAdmin,
@@ -14,9 +15,22 @@ const THEMES = [
   { id: "light", name: "Soft Cloud", bg: "linear-gradient(135deg, #e0e7ff 0%, #f1f5f9 50%, #e2e8f0 100%)", isDark: false },
 ];
 
+export const SAMPLE_STUDENTS = [
+  { id: "STU-SMIA-002", name: "Kwame Mensah", email: "k.mensah@student.school.edu", password: "Student@2026", grade: "Grade 11-A (Science)", rollNumber: "11A-04", feesBalance: "GH₵0.00" },
+  { id: "STU-SMIA-001", name: "Elena Rostova", email: "e.rostova@student.school.edu", password: "Student@2026", grade: "Grade 11-A (Advanced)", rollNumber: "11A-01", feesBalance: "GH₵0.00" },
+  { id: "STU-SMIA-004", name: "Ama Serwaa", email: "a.serwaa@student.school.edu", password: "Student@2026", grade: "Grade 10-A (General)", rollNumber: "10A-09", feesBalance: "GH₵850.00" },
+  { id: "STU-SMIA-003", name: "Lucas Vance", email: "l.vance@student.school.edu", password: "Student@2026", grade: "Grade 10-B (Robotics)", rollNumber: "10B-14", feesBalance: "GH₵0.00" },
+];
+
+export const SAMPLE_TEACHERS = [
+  { id: "TCH-2026-102", name: "Mrs. Sarah Jenkins", email: "s.jenkins@faculty.school.edu", password: "Teacher@2026", dept: "Science & Chemistry", title: "Senior Chemistry Faculty" },
+  { id: "TCH-GH-101", name: "Mr. Kofi Annan", email: "k.annan@faculty.school.edu", password: "Teacher@2026", dept: "Physics & Robotics", title: "Head of Physics & Robotics" },
+  { id: "TCH-2026-103", name: "Marcus Brody", email: "m.brody@faculty.school.edu", password: "Teacher@2026", dept: "History & Arts", title: "Senior History Master" },
+];
+
 function Login({ onNavigate }) {
   const [activeTheme, setActiveTheme] = useState(THEMES[0]);
-  const [role, setRole] = useState("Staff / Teacher");
+  const [role, setRole] = useState("Student");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -63,12 +77,14 @@ function Login({ onNavigate }) {
         });
         setIsRegister(false);
       } else {
+        // 1. Multi-School Platform Super Admin
         const isPlatformAdmin =
           email.toLowerCase().includes("platform") ||
           password === "Platform@2026";
 
         if (isPlatformAdmin) {
           localStorage.setItem("platform_admin_auth", "true");
+          localStorage.setItem("show_daily_quote_popup", "true");
           setAlert({
             message: `✓ Multi-School Platform Super Admin Authenticated! Redirecting to Platform Management...`,
             type: "success",
@@ -79,16 +95,104 @@ function Login({ onNavigate }) {
           return;
         }
 
-        // Authenticate against school-based admin credentials
+        // 2. Student Role Sign In
+        if (role === "Student") {
+          const matched = SAMPLE_STUDENTS.find(
+            (s) => s.email.toLowerCase() === email.trim().toLowerCase()
+          );
+          const studentObj = matched
+            ? {
+                id: matched.id,
+                fullName: matched.name,
+                email: matched.email,
+                grade: matched.grade,
+                rollNumber: matched.rollNumber,
+                campus: "Kensington Central Campus",
+                feesBalance: matched.feesBalance,
+                attendancePct: 99,
+                gpa: "3.95",
+                schoolName: "St. Mary International Academy",
+              }
+            : {
+                id: "STU-SMIA-002",
+                fullName: userIdentifier.toUpperCase(),
+                email: email.trim(),
+                grade: "Grade 11-A",
+                rollNumber: "11A-04",
+                campus: "Central Campus",
+                feesBalance: "GH₵0.00",
+                attendancePct: 98,
+                gpa: "3.90",
+                schoolName: "School Hub Academy",
+              };
+
+          localStorage.setItem("student_auth", "true");
+          localStorage.setItem("active_student_user", JSON.stringify(studentObj));
+          localStorage.setItem("show_daily_quote_popup", "true");
+          setAlert({
+            message: `✓ Verified Student: Welcome ${studentObj.fullName}! Redirecting to Student Portal...`,
+            type: "success",
+          });
+          if (onNavigate) {
+            setTimeout(() => onNavigate("student-portal"), 800);
+          }
+          return;
+        }
+
+        // 3. Teacher / Faculty Role Sign In
+        if (role === "Staff / Teacher") {
+          const matched = SAMPLE_TEACHERS.find(
+            (t) => t.email.toLowerCase() === email.trim().toLowerCase()
+          );
+          const teacherObj = matched
+            ? {
+                id: matched.id,
+                name: matched.name,
+                email: matched.email,
+                title: matched.title,
+                dept: matched.dept,
+                campus: "Kensington Central Campus",
+                classes: ["Grade 11-A", "Grade 10-B", "Grade 12-A"],
+                totalStudents: 94,
+                periodsToday: 4,
+              }
+            : {
+                id: "TCH-2026-102",
+                name: userIdentifier.toUpperCase(),
+                email: email.trim(),
+                title: "Senior Faculty Instructor",
+                dept: "Academic Faculty",
+                campus: "Central Campus",
+                classes: ["Grade 11-A", "Grade 10-B"],
+                totalStudents: 80,
+                periodsToday: 4,
+              };
+
+          localStorage.setItem("teacher_auth", "true");
+          sessionStorage.setItem("teacher_portal_unlocked", "true");
+          localStorage.setItem("active_teacher_user", JSON.stringify(teacherObj));
+          localStorage.setItem("show_daily_quote_popup", "true");
+          setAlert({
+            message: `✓ Verified Faculty: Welcome ${teacherObj.name}! Redirecting to Teacher Portal...`,
+            type: "success",
+          });
+          if (onNavigate) {
+            setTimeout(() => onNavigate("teacher-portal"), 800);
+          }
+          return;
+        }
+
+        // 4. Authenticate against school-based admin credentials
         const schoolAuth = authenticateSchoolAdmin(email, password);
         if (schoolAuth.success) {
           const a = schoolAuth.admin;
+          localStorage.setItem("show_daily_quote_popup", "true");
           setAlert({
             message: `✓ Verified Administrator for ${a.schoolName} (${a.adminName})! Redirecting to School Portal...`,
             type: "success",
           });
           if (onNavigate) {
-            setTimeout(() => onNavigate("user-management"), 850);
+            setTimeout(() => onNavigate("school-dashboard"), 850);
           }
           return;
         }
@@ -113,7 +217,7 @@ function Login({ onNavigate }) {
             type: "success",
           });
           if (onNavigate) {
-            setTimeout(() => onNavigate("user-management"), 900);
+            setTimeout(() => onNavigate("school-dashboard"), 900);
           }
         } else {
           setAlert({
@@ -142,6 +246,9 @@ function Login({ onNavigate }) {
 
   return (
     <div className={`header-page-container ${activeTheme.isDark ? "theme-dark" : "theme-light"}`}>
+      {/* Interactive 3D Spinning Words Aura */}
+      <SpinningWordsBackground speed="slow" />
+
       <header className="header-card">
         {/* Top bar with theme changer & register toggle */}
         <div className="header-top-bar">
@@ -190,7 +297,7 @@ function Login({ onNavigate }) {
           </div>
         )}
 
-        {/* Side-by-side header content: Image at side of login */}
+        {/* Side-by-side header content */}
         <div className="header-content">
           <div className="image-wrapper">
             <img className="img" src={profile} alt="School Portal" />
@@ -209,19 +316,136 @@ function Login({ onNavigate }) {
 
               {/* Role Selection Tabs */}
               <div className="role-tabs">
-                {["Staff / Teacher", "Student", "Administrator"].map((r) => (
+                {["Student", "Staff / Teacher", "Administrator"].map((r) => (
                   <button
                     key={r}
                     type="button"
                     className={`role-tab ${role === r ? "active" : ""}`}
-                    onClick={() => setRole(r)}
+                    onClick={() => {
+                      setRole(r);
+                      setAlert(null);
+                    }}
                   >
-                    {r}
+                    {r === "Student" ? "🎓 Student" : r === "Staff / Teacher" ? "👨‍🏫 Teacher" : "🛡️ Administrator"}
                   </button>
                 ))}
               </div>
 
-              {/* School Admin Quick-Selector (Each School's Password) */}
+              {/* 1. STUDENT QUICK-SELECTOR */}
+              {role === "Student" && !isRegister && (
+                <div
+                  style={{
+                    background: "rgba(14, 165, 233, 0.12)",
+                    border: "1px solid rgba(14, 165, 233, 0.35)",
+                    borderRadius: "10px",
+                    padding: "10px 12px",
+                    marginBottom: "16px",
+                  }}
+                >
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                    <span style={{ fontSize: "11px", fontWeight: 700, color: "#38bdf8", textTransform: "uppercase" }}>
+                      🎓 Quick-Select Student Account
+                    </span>
+                    <span style={{ fontSize: "10px", color: "#7dd3fc" }}>
+                      Pass: Student@2026
+                    </span>
+                  </div>
+                  <select
+                    style={{
+                      width: "100%",
+                      padding: "8px 10px",
+                      background: "rgba(15, 23, 42, 0.95)",
+                      border: "1px solid rgba(255, 255, 255, 0.15)",
+                      borderRadius: "6px",
+                      color: "#f1f5f9",
+                      fontSize: "12px",
+                      cursor: "pointer",
+                      outline: "none",
+                    }}
+                    onChange={(e) => {
+                      if (!e.target.value) return;
+                      const s = SAMPLE_STUDENTS.find((item) => item.id === e.target.value);
+                      if (s) {
+                        setEmail(s.email);
+                        setPassword(s.password);
+                        setAlert({
+                          type: "success",
+                          message: `Loaded Student: ${s.name} (${s.email})! Click 'Submit' below to open Student Portal.`,
+                        });
+                      }
+                    }}
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      -- Select Student to Auto-fill --
+                    </option>
+                    {SAMPLE_STUDENTS.map((s) => (
+                      <option key={s.id} value={s.id}>
+                        {s.name} — {s.grade} ({s.email})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+
+              {/* 2. TEACHER QUICK-SELECTOR */}
+              {role === "Staff / Teacher" && !isRegister && (
+                <div
+                  style={{
+                    background: "rgba(16, 185, 129, 0.12)",
+                    border: "1px solid rgba(16, 185, 129, 0.35)",
+                    borderRadius: "10px",
+                    padding: "10px 12px",
+                    marginBottom: "16px",
+                  }}
+                >
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                    <span style={{ fontSize: "11px", fontWeight: 700, color: "#34d399", textTransform: "uppercase" }}>
+                      👨‍🏫 Quick-Select Teacher / Faculty
+                    </span>
+                    <span style={{ fontSize: "10px", color: "#6ee7b7" }}>
+                      Pass: Teacher@2026
+                    </span>
+                  </div>
+                  <select
+                    style={{
+                      width: "100%",
+                      padding: "8px 10px",
+                      background: "rgba(15, 23, 42, 0.95)",
+                      border: "1px solid rgba(255, 255, 255, 0.15)",
+                      borderRadius: "6px",
+                      color: "#f1f5f9",
+                      fontSize: "12px",
+                      cursor: "pointer",
+                      outline: "none",
+                    }}
+                    onChange={(e) => {
+                      if (!e.target.value) return;
+                      const t = SAMPLE_TEACHERS.find((item) => item.id === e.target.value);
+                      if (t) {
+                        setEmail(t.email);
+                        setPassword(t.password);
+                        setAlert({
+                          type: "success",
+                          message: `Loaded Teacher: ${t.name} (${t.email})! Click 'Submit' below to open Teacher Portal.`,
+                        });
+                      }
+                    }}
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      -- Select Teacher to Auto-fill --
+                    </option>
+                    {SAMPLE_TEACHERS.map((t) => (
+                      <option key={t.id} value={t.id}>
+                        {t.name} — {t.dept} ({t.email})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+
+              {/* 3. ADMINISTRATOR QUICK-SELECTOR */}
               {role === "Administrator" && !isRegister && (
                 <div
                   style={{
@@ -294,13 +518,21 @@ function Login({ onNavigate }) {
 
               {/* Email / Identifier Field */}
               <div className="form-field">
-                <label className="form-label">Email or School ID</label>
+                <label className="form-label">
+                  {role === "Student" ? "Student Email or School ID" : role === "Staff / Teacher" ? "Faculty Email or Staff ID" : "Administrator Email"}
+                </label>
                 <div className="input-wrapper">
                   <input
                     type="text"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="name@school.edu or STU-1024"
+                    placeholder={
+                      role === "Student"
+                        ? "e.g. k.mensah@student.school.edu"
+                        : role === "Staff / Teacher"
+                        ? "e.g. s.jenkins@faculty.school.edu"
+                        : "e.g. admin@stmarys.edu"
+                    }
                     required
                   />
                 </div>
@@ -346,7 +578,7 @@ function Login({ onNavigate }) {
                 </div>
               )}
 
-              {/* Remember Me and Forgot Password row (login mode) */}
+              {/* Remember Me and Forgot Password row */}
               {!isRegister && (
                 <div className="checkbox-row">
                   <label className="checkbox-label">
@@ -371,8 +603,32 @@ function Login({ onNavigate }) {
               <button className="submit" type="submit" disabled={isLoading}>
                 {isLoading
                   ? isRegister ? "Creating Account..." : "Signing in..."
-                  : isRegister ? "Sign Up" : "Submit"}
+                  : isRegister ? "Sign Up" : `Sign In to ${role} Portal`}
               </button>
+
+              {/* Direct Portal Quick Jump Links */}
+              <div style={{ marginTop: "14px", display: "flex", justifyContent: "space-between", fontSize: "12px", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "12px" }}>
+                <a
+                  href="#student-portal"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onNavigate) onNavigate("student-portal");
+                  }}
+                  style={{ color: "#38bdf8", textDecoration: "none", fontWeight: 600 }}
+                >
+                  🎓 Student Portal →
+                </a>
+                <a
+                  href="#teacher-portal"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onNavigate) onNavigate("teacher-portal");
+                  }}
+                  style={{ color: "#34d399", textDecoration: "none", fontWeight: 600 }}
+                >
+                  👨‍🏫 Teacher Portal →
+                </a>
+              </div>
 
               {/* IT Helpdesk Contact */}
               <div className="helpdesk-footer">

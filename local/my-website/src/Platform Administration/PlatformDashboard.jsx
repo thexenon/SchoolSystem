@@ -5,6 +5,7 @@ import {
   getSchoolAdmins,
   switchActiveSchool,
 } from "./schoolAdminAuth";
+import DailyQuotePopupModal from "../components/DailyQuotePopupModal";
 
 const ACTIVITY_LOG = [
   {
@@ -92,8 +93,16 @@ function PlatformDashboard({ onNavigate, onLogout }) {
     navigateTo("student-list");
   };
 
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
+
   return (
     <div className="pd-wrapper">
+      {/* Daily Motivational Quote Popup Modal */}
+      <DailyQuotePopupModal
+        forceOpen={quoteModalOpen}
+        onClose={() => setQuoteModalOpen(false)}
+      />
+
       {/* Platform Top Navigation Bar */}
       <nav className="platform-nav-bar">
         <div className="platform-brand">
@@ -150,6 +159,15 @@ function PlatformDashboard({ onNavigate, onLogout }) {
         </div>
 
         <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+          <button
+            type="button"
+            className="platform-menu-item"
+            style={{ background: "rgba(245, 158, 11, 0.15)", color: "#fbbf24", border: "1px solid rgba(245, 158, 11, 0.3)" }}
+            onClick={() => setQuoteModalOpen(true)}
+            title="Read Today's Daily Inspiration"
+          >
+            ✨ Daily Quote
+          </button>
           <button
             type="button"
             className="platform-menu-item"
@@ -244,7 +262,7 @@ function PlatformDashboard({ onNavigate, onLogout }) {
               💎
             </div>
           </div>
-          <div className="pd-stat-val">$184,200</div>
+          <div className="pd-stat-val">GH₵184,200</div>
           <div className="pd-stat-sub">
             <span className="pd-trend-up">↑ +14.6%</span> Monthly Recurring Revenue (MRR)
           </div>

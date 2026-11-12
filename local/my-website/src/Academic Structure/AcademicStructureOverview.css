@@ -1,0 +1,587 @@
+/* AcademicStructureOverview.css */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+.aso-page-wrapper {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #0b1120;
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(2, 132, 199, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 90% 90%, rgba(99, 102, 241, 0.1) 0%, transparent 45%);
+  color: #f1f5f9;
+  min-height: 100vh;
+  padding: 24px 28px 60px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+.aso-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #0284c7;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  z-index: 9999;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* KPI Grid */
+.aso-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.aso-kpi-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 18px 20px;
+  backdrop-filter: blur(12px);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.aso-kpi-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(2, 132, 199, 0.4);
+}
+
+.aso-kpi-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.aso-kpi-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.aso-kpi-icon {
+  font-size: 20px;
+}
+
+.aso-kpi-val {
+  font-size: 24px;
+  font-weight: 800;
+  color: #f8fafc;
+  line-height: 1.2;
+}
+
+.aso-kpi-sub {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+/* Action Bar & View Switcher */
+.aso-action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.aso-view-tabs {
+  display: flex;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 4px;
+  gap: 4px;
+  overflow-x: auto;
+}
+
+.aso-tab-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.aso-tab-btn:hover {
+  color: #f1f5f9;
+}
+
+.aso-tab-btn.active {
+  background: rgba(14, 165, 233, 0.2);
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.aso-btn-export {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #e2e8f0;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.aso-btn-export:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+/* Hierarchy Tree */
+.aso-tree-container,
+.aso-matrix-container,
+.aso-departments-container {
+  background: rgba(15, 23, 42, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.aso-tree-header {
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.aso-tree-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0 0 6px;
+}
+
+.aso-tree-header p {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.aso-tree-root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Level Node */
+.aso-level-block {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.aso-level-node {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: rgba(15, 23, 42, 0.9);
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.aso-level-node:hover {
+  background: rgba(30, 41, 59, 0.9);
+}
+
+.aso-level-node.expanded {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.aso-node-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.aso-toggle-arrow {
+  font-size: 12px;
+  color: #38bdf8;
+  width: 16px;
+}
+
+.aso-level-badge {
+  background: rgba(2, 132, 199, 0.2);
+  color: #38bdf8;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  border: 1px solid rgba(2, 132, 199, 0.35);
+}
+
+.aso-level-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.aso-level-sub {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.aso-node-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aso-chip {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.aso-chip-grading {
+  background: rgba(99, 102, 241, 0.15);
+  color: #c7d2fe;
+}
+
+.aso-chip-classes {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+}
+
+/* Children Classes */
+.aso-children-classes {
+  padding: 16px 20px 20px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aso-class-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.aso-class-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.aso-class-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #38bdf8;
+  background: rgba(2, 132, 199, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.aso-class-name {
+  display: inline;
+  font-size: 16px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.aso-class-teacher {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.aso-class-teacher strong {
+  color: #38bdf8;
+  margin-left: 4px;
+}
+
+.aso-class-meta {
+  font-size: 12px;
+  color: #94a3b8;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+/* Streams in Class */
+.aso-streams-wrapper {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.aso-streams-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.aso-streams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+}
+
+.aso-stream-pill-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.aso-stream-code-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.aso-stream-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: #34d399;
+}
+
+.aso-stream-room {
+  color: #94a3b8;
+}
+
+.aso-stream-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 2px;
+}
+
+.aso-stream-track {
+  font-size: 11px;
+  color: #c7d2fe;
+  margin-bottom: 6px;
+}
+
+.aso-stream-teacher {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.aso-stream-stats {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.aso-no-stream,
+.aso-no-classes {
+  font-size: 12px;
+  color: #64748b;
+  font-style: italic;
+  padding: 8px;
+}
+
+/* Matrix Table */
+.aso-table-wrapper {
+  overflow-x: auto;
+}
+
+.aso-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 12px;
+}
+
+.aso-matrix-table th {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 12px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.aso-matrix-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #e2e8f0;
+  vertical-align: middle;
+}
+
+.aso-sub-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aso-sub-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(2, 132, 199, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.aso-cat-pill {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.aso-core {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+}
+
+.aso-elec {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+}
+
+.aso-teacher-pill {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.aso-chips-row {
+  display: flex;
+  gap: 4px;
+}
+
+.aso-mini-chip {
+  background: rgba(255, 255, 255, 0.07);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+}
+
+.aso-syllabus-text {
+  font-family: 'JetBrains Mono', monospace;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+/* Departments Grid */
+.aso-depts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.aso-dept-summary-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.aso-dept-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.aso-dept-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #38bdf8;
+  background: rgba(2, 132, 199, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.aso-dept-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 4px 0 0;
+}
+
+.aso-dept-budget {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #34d399;
+}
+
+.aso-hod-row {
+  font-size: 12px;
+  color: #cbd5e1;
+  margin-bottom: 8px;
+}
+
+.aso-hod-val {
+  color: #38bdf8;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.aso-dept-stats-row {
+  font-size: 11px;
+  color: #94a3b8;
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.aso-dept-subjects-list {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.aso-dept-sub-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.aso-dept-sub-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.aso-dept-sub-chip {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  color: #cbd5e1;
+}

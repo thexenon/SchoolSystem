@@ -48,7 +48,7 @@ const INITIAL_LOGS = [
     metadata: {
       previousLimit: 2000,
       newLimit: 3000,
-      annualRevenueDelta: "+$12,000",
+      annualRevenueDelta: "+GH₵12,000",
       checksum: "a31489b02319ef47bc184013489e",
     },
   },
@@ -238,7 +238,7 @@ const INITIAL_LOGS = [
     metadata: {
       contractTerm: "12 Months",
       invoiceNumber: "INV-2026-1092",
-      totalPaid: "$32,400.00",
+      totalPaid: "GH₵32,400.00",
       checksum: "67acfe1940192ba87123904fa198",
     },
   },

@@ -1,0 +1,308 @@
+/* Daily Motivational Quote Popup Modal Styles */
+.dq-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 14, 26, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: dqFadeIn 0.3s ease-out;
+}
+
+@keyframes dqFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dq-modal {
+  width: 100%;
+  max-width: 580px;
+  background: linear-gradient(145deg, rgba(18, 25, 44, 0.96) 0%, rgba(13, 19, 35, 0.98) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 
+    0 24px 60px rgba(0, 0, 0, 0.7),
+    0 0 50px rgba(245, 158, 11, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 28px 30px;
+  color: #f8fafc;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  animation: dqScaleIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+  position: relative;
+}
+
+@keyframes dqScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.dq-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.dq-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.dq-sparkle-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.dq-category-pill {
+  font-size: 11px;
+  font-weight: 600;
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.dq-close-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.dq-close-btn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.dq-date-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dq-origin-tag {
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.dq-quote-body {
+  position: relative;
+  padding: 10px 24px;
+  margin-bottom: 22px;
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 3px solid #f59e0b;
+  border-radius: 0 12px 12px 0;
+}
+
+.dq-quote-mark {
+  font-size: 40px;
+  font-family: Georgia, serif;
+  color: #f59e0b;
+  opacity: 0.4;
+  line-height: 1;
+  user-select: none;
+}
+
+.dq-quote-left {
+  position: absolute;
+  top: -8px;
+  left: 6px;
+}
+
+.dq-quote-right {
+  position: absolute;
+  bottom: -22px;
+  right: 10px;
+}
+
+.dq-quote-text {
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 500;
+  color: #ffffff;
+  font-style: italic;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.dq-author-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+}
+
+.dq-author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 15px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+}
+
+.dq-author-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.dq-author-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 0 0 3px;
+}
+
+.dq-author-title {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dq-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.dq-action-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.dq-action-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.dq-btn-active {
+  background: rgba(245, 158, 11, 0.2) !important;
+  border-color: rgba(245, 158, 11, 0.5) !important;
+  color: #fbbf24 !important;
+}
+
+.dq-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dq-remember-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #94a3b8;
+  cursor: pointer;
+}
+
+.dq-remember-label input {
+  accent-color: #f59e0b;
+  cursor: pointer;
+}
+
+.dq-continue-btn {
+  width: 100%;
+  padding: 13px 20px;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #0f172a;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+  transition: all 0.2s ease;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.dq-continue-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.5);
+  filter: brightness(1.08);
+}
+
+@media (max-width: 600px) {
+  .dq-modal {
+    padding: 20px 18px;
+  }
+  .dq-quote-text {
+    font-size: 16px;
+  }
+  .dq-actions-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

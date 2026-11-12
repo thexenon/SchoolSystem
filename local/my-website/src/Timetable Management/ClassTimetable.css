@@ -1,0 +1,485 @@
+/* ClassTimetable.css */
+
+.ct-container {
+  min-height: 100vh;
+  background: radial-gradient(circle at 10% 20%, rgba(20, 24, 40, 0.95), rgba(10, 12, 22, 1));
+  color: #f1f5f9;
+  padding: 24px 32px 64px 32px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Header */
+.ct-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.ct-title-box {
+  max-width: 680px;
+}
+
+.ct-tag {
+  display: inline-block;
+  background: rgba(6, 182, 212, 0.15);
+  color: #38bdf8;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  margin-bottom: 8px;
+}
+
+.ct-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.4px;
+}
+
+.ct-subtitle {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.ct-subtitle strong {
+  color: #e2e8f0;
+}
+
+.ct-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ct-cohort-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ct-cohort-picker label {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.ct-select {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+}
+
+.ct-view-toggle {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 3px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ct-toggle-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ct-toggle-btn.active {
+  background: rgba(6, 182, 212, 0.2);
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.ct-btn-print {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.ct-btn-print:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Meta Strip */
+.ct-meta-strip {
+  display: flex;
+  gap: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 12px 20px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.ct-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.ct-meta-item strong {
+  color: #f8fafc;
+}
+
+/* Print Header (Hidden on screen) */
+.ct-print-header {
+  display: none;
+}
+
+/* Table Card */
+.ct-card-wrap {
+  background: rgba(18, 24, 38, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ct-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.ct-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.ct-table th {
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #94a3b8;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.ct-th-time {
+  width: 150px;
+  text-align: left;
+}
+
+.ct-th-day {
+  text-align: center;
+}
+
+.ct-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: middle;
+}
+
+.ct-cell-time-info {
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.ct-period-label {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+.ct-period-time {
+  font-family: monospace;
+  font-size: 0.76rem;
+  color: #64748b;
+  margin-top: 3px;
+}
+
+.ct-cell-content {
+  padding: 8px;
+  height: 96px;
+}
+
+.ct-slot-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 4px solid #06b6d4;
+  border-radius: 8px;
+  padding: 8px 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+}
+
+.ct-subj-name {
+  font-weight: 700;
+  font-size: 0.86rem;
+  color: #ffffff;
+}
+
+.ct-teacher-name {
+  font-size: 0.74rem;
+  color: #cbd5e1;
+}
+
+.ct-room-badge {
+  font-size: 0.72rem;
+  color: #94a3b8;
+}
+
+.ct-free-period {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  color: #475569;
+  font-style: italic;
+}
+
+/* Break Row */
+.ct-row-break {
+  background: rgba(245, 158, 11, 0.04);
+}
+
+.ct-break-time {
+  padding: 10px 16px;
+  font-family: monospace;
+  font-size: 0.78rem;
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.ct-break-cell {
+  padding: 10px 16px;
+  text-align: center;
+}
+
+.ct-break-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fbbf24;
+  letter-spacing: 0.5px;
+}
+
+/* Agenda View */
+.ct-agenda-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ct-day-selector-bar {
+  display: flex;
+  gap: 8px;
+}
+
+.ct-day-pill {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ct-day-pill.active {
+  background: rgba(6, 182, 212, 0.2);
+  border-color: rgba(6, 182, 212, 0.5);
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.ct-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ct-timeline-item {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.ct-timeline-time-col {
+  width: 130px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ct-timeline-time {
+  font-family: monospace;
+  font-size: 0.82rem;
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.ct-timeline-pnum {
+  font-size: 0.74rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.ct-timeline-card {
+  flex: 1;
+  background: rgba(18, 24, 38, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 4px solid #06b6d4;
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.ct-timeline-subj {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.ct-timeline-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 0.84rem;
+  color: #94a3b8;
+}
+
+.ct-timeline-meta strong {
+  color: #e2e8f0;
+}
+
+.ct-timeline-free {
+  color: #64748b;
+  font-style: italic;
+  font-size: 0.88rem;
+}
+
+.ct-timeline-break {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(245, 158, 11, 0.05);
+  border: 1px dashed rgba(245, 158, 11, 0.2);
+  border-radius: 8px;
+}
+
+.ct-timeline-break-body {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #fbbf24;
+}
+
+/* Print Styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .ct-print-header,
+  .ct-print-header *,
+  .ct-card-wrap,
+  .ct-card-wrap * {
+    visibility: visible;
+  }
+  .ct-print-header {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .ct-print-crest {
+    font-size: 14pt;
+    font-weight: 800;
+    color: #000000;
+  }
+  .ct-print-title {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #333333;
+    margin-top: 4px;
+  }
+  .ct-print-sub {
+    font-size: 9pt;
+    color: #555555;
+    margin-top: 2px;
+  }
+  .ct-card-wrap {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #000000 !important;
+  }
+  .ct-table th {
+    background: #f0f0f0 !important;
+    color: #000000 !important;
+    border: 1px solid #000000 !important;
+  }
+  .ct-table td {
+    border: 1px solid #000000 !important;
+    color: #000000 !important;
+  }
+  .ct-slot-box {
+    background: #ffffff !important;
+    border: 1px solid #cccccc !important;
+    color: #000000 !important;
+  }
+  .ct-subj-name {
+    color: #000000 !important;
+  }
+  .ct-teacher-name, .ct-room-badge {
+    color: #444444 !important;
+  }
+}

@@ -9,6 +9,9 @@ import {
   logoutSchoolAdmin,
 } from "../Platform Administration/schoolAdminAuth";
 import { getStudents } from "../Student Management/studentData";
+import SpinningWordsBackground from "../components/SpinningWordsBackground";
+import MotivationQuoteWidget from "../components/MotivationQuoteWidget";
+import DailyQuotePopupModal from "../components/DailyQuotePopupModal";
 
 const RECENT_FEE_COLLECTIONS = [
   { id: "TX-9021", student: "Elena Rostova", grade: "Grade 11-A", amount: "GH₵3,450.00", feeType: "Term 1 Tuition", method: "MTN Mobile Money", date: "Today, 10:24 AM", status: "Paid" },
@@ -66,6 +69,8 @@ function SchoolDashboard({ onNavigate, onLogout }) {
     }
   };
 
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
+
   const handleSignOut = () => {
     logoutSchoolAdmin();
     if (onLogout) {
@@ -77,6 +82,15 @@ function SchoolDashboard({ onNavigate, onLogout }) {
 
   return (
     <div className="sch-page-wrapper">
+      {/* Interactive 3D Spinning Words Aura */}
+      <SpinningWordsBackground speed="slow" showControlBadge={true} />
+
+      {/* Daily Motivational Quote Popup Modal */}
+      <DailyQuotePopupModal
+        forceOpen={quoteModalOpen}
+        onClose={() => setQuoteModalOpen(false)}
+      />
+
       {/* Toast Notification */}
       {toastMessage && (
         <div
@@ -227,6 +241,34 @@ function SchoolDashboard({ onNavigate, onLogout }) {
           <button
             type="button"
             className="school-menu-item"
+            onClick={() => navigateTo("education-levels")}
+          >
+            📐 Academic Structure
+          </button>
+          <button
+            type="button"
+            className="school-menu-item"
+            onClick={() => navigateTo("attendance-register")}
+          >
+            📋 Attendance Portal
+          </button>
+          <button
+            type="button"
+            className="school-menu-item"
+            onClick={() => navigateTo("assessment-setup")}
+          >
+            🏆 Examinations & Results
+          </button>
+          <button
+            type="button"
+            className="school-menu-item"
+            onClick={() => navigateTo("period-management")}
+          >
+            🗓️ Timetable & Schedules
+          </button>
+          <button
+            type="button"
+            className="school-menu-item"
             onClick={() => navigateTo("school-settings")}
           >
             ⚙️ Settings
@@ -237,6 +279,14 @@ function SchoolDashboard({ onNavigate, onLogout }) {
           <button
             type="button"
             className="school-nav-btn school-nav-btn-highlight"
+            onClick={() => setQuoteModalOpen(true)}
+            title="Read Today's Daily Inspiration"
+          >
+            ✨ Daily Quote
+          </button>
+          <button
+            type="button"
+            className="school-nav-btn"
             onClick={() => navigateTo("user-management")}
             title="Manage Students, Teachers, and School Staff"
           >
@@ -389,6 +439,9 @@ function SchoolDashboard({ onNavigate, onLogout }) {
         </div>
       )}
 
+      {/* Daily Motivation & Leadership Quote */}
+      <MotivationQuoteWidget />
+
       {/* Page Header */}
       <div className="sch-header">
         <div>
@@ -511,9 +564,179 @@ function SchoolDashboard({ onNavigate, onLogout }) {
               </div>
             </div>
 
-            <div style={{ fontSize: "13px", color: "#cbd5e1", lineHeight: 1.5 }}>
+            <div style={{ fontSize: "13px", color: "#cbd5e1", lineHeight: 1.5, marginBottom: "12px" }}>
               Attendance registers submitted across classrooms this morning for <strong>{schoolName}</strong>. 
               Automated notifications dispatched to parents of unexcused absent students at 09:15 AM.
+            </div>
+
+            {/* In-Portal Attendance Management Launchpad */}
+            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", paddingTop: "12px", borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "6px 12px" }} onClick={() => navigateTo("take-attendance")}>
+                📝 Take Attendance
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "6px 12px" }} onClick={() => navigateTo("attendance-register")}>
+                📋 Master Register
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "6px 12px" }} onClick={() => navigateTo("student-attendance-history")}>
+                🕒 Student History
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "6px 12px" }} onClick={() => navigateTo("attendance-correction")}>
+                ✏️ Corrections
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "6px 12px" }} onClick={() => navigateTo("attendance-reports")}>
+                📊 Reports & Trends
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "6px 12px" }} onClick={() => navigateTo("absence-alerts")}>
+                🚨 Parent Alerts
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "6px 12px" }} onClick={() => navigateTo("staff-attendance-register")}>
+                👨‍🏫 Staff Register
+              </button>
+            </div>
+          </div>
+
+          {/* Examinations & Academic Results Command Center (Module 8) */}
+          <div className="sch-card">
+            <div className="sch-card-header">
+              <div>
+                <h2 className="sch-card-title">
+                  <span>🏆</span> Examinations & Academic Results Center
+                </h2>
+                <div style={{ fontSize: "12px", color: "#94a3b8", marginTop: "4px" }}>
+                  WASSCE & Terminal Assessments • Principal Approval Gate & Transcript Engine
+                </div>
+              </div>
+              <button
+                type="button"
+                className="school-nav-btn school-nav-btn-highlight"
+                style={{ fontSize: "12px" }}
+                onClick={() => navigateTo("assessment-setup")}
+              >
+                Open Full Suite (12 Screens) →
+              </button>
+            </div>
+
+            <div className="sch-attendance-meters" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))" }}>
+              <div className="sch-meter-item">
+                <div className="sch-meter-number" style={{ color: "#818cf8" }}>6</div>
+                <div className="sch-meter-label">Active Assessments</div>
+              </div>
+              <div className="sch-meter-item">
+                <div className="sch-meter-number" style={{ color: "#34d399" }}>4</div>
+                <div className="sch-meter-label">Cohorts Published</div>
+              </div>
+              <div className="sch-meter-item">
+                <div className="sch-meter-number" style={{ color: "#fbbf24" }}>1</div>
+                <div className="sch-meter-label">Pending PIN Clear</div>
+              </div>
+              <div className="sch-meter-item">
+                <div className="sch-meter-number" style={{ color: "#38bdf8", fontSize: "18px" }}>GH₵ 150</div>
+                <div className="sch-meter-label">Remark Tariff</div>
+              </div>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: "8px", marginTop: "16px" }}>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("assessment-setup")}>
+                📝 Assessment Setup
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("examination-management")}>
+                🗓️ Exam Schedules
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("marks-entry")}>
+                ✍️ Teacher Marks Entry
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("marks-import")}>
+                📥 Spreadsheet Import
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("results-review")}>
+                🔍 Quality Review
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("results-approval")}>
+                ✅ Executive Approval
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("grading-system")}>
+                📐 Grading Scales
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("student-results")}>
+                🎓 Student Transcripts
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("report-cards")}>
+                📄 Terminal Report Cards
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("class-performance")}>
+                📊 Class Performance
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("results-publication")}>
+                📢 Portal Publication
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("results-correction")}>
+                🔄 Results Correction
+              </button>
+            </div>
+          </div>
+
+          {/* Timetable & Master Schedule Command Center (Module 9) */}
+          <div className="sch-card">
+            <div className="sch-card-header">
+              <div>
+                <h2 className="sch-card-title">
+                  <span>🗓️</span> Timetable & Schedule Management
+                </h2>
+                <div style={{ fontSize: "12px", color: "#94a3b8", marginTop: "4px" }}>
+                  Bell Schedules, Class & Faculty Routines, Room Tracking & Conflict Engine
+                </div>
+              </div>
+              <button
+                type="button"
+                className="school-nav-btn school-nav-btn-highlight"
+                style={{ fontSize: "12px" }}
+                onClick={() => navigateTo("period-management")}
+              >
+                Open Timetable Suite (7 Screens) →
+              </button>
+            </div>
+
+            <div className="sch-attendance-meters" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))" }}>
+              <div className="sch-meter-item">
+                <div className="sch-meter-number" style={{ color: "#06b6d4" }}>8</div>
+                <div className="sch-meter-label">Daily Periods</div>
+              </div>
+              <div className="sch-meter-item">
+                <div className="sch-meter-number" style={{ color: "#34d399" }}>0</div>
+                <div className="sch-meter-label">Clashes (Clean)</div>
+              </div>
+              <div className="sch-meter-item">
+                <div className="sch-meter-number" style={{ color: "#8b5cf6" }}>6</div>
+                <div className="sch-meter-label">Venues & Labs</div>
+              </div>
+              <div className="sch-meter-item">
+                <div className="sch-meter-number" style={{ color: "#f59e0b" }}>4</div>
+                <div className="sch-meter-label">Standby Relief</div>
+              </div>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: "8px", marginTop: "16px" }}>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("period-management")}>
+                ⏰ Periods & Bell Hours
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("timetable-builder")}>
+                🛠️ Timetable Builder
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("class-timetable")}>
+                📚 Class Timetable
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("teacher-timetable")}>
+                👨‍🏫 Teacher Schedules
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("room-management")}>
+                🏢 Room Management
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("timetable-conflict-checker")}>
+                ⚡ Conflict Checker
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("substitute-teacher-management")}>
+                🔄 Substitute Teachers
+              </button>
             </div>
           </div>
 
@@ -709,6 +932,15 @@ function SchoolDashboard({ onNavigate, onLogout }) {
                 onClick={() => navigateTo("term-semester-management")}
               >
                 <span>⏳ Term & Semester Dates</span>
+                <span>→</span>
+              </button>
+              <button
+                type="button"
+                className="school-nav-btn"
+                style={{ justifyContent: "space-between", padding: "12px 16px" }}
+                onClick={() => navigateTo("assessment-setup")}
+              >
+                <span>🏆 Examinations & Results Portal (12 Screens)</span>
                 <span>→</span>
               </button>
               <button

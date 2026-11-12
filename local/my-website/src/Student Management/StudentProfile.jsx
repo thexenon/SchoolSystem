@@ -15,9 +15,9 @@ const SAMPLE_RESULTS = [
 ];
 
 const SAMPLE_FEES = [
-  { id: "INV-2026-081", title: "Academic Year Tuition - Term 1", amount: "$3,450.00", dueDate: "Sep 15, 2026", status: "Paid", paidAt: "Sep 12, 2026 via Stripe" },
-  { id: "INV-2026-082", title: "STEM Technology & Lab Pass", amount: "$350.00", dueDate: "Oct 01, 2026", status: "Paid", paidAt: "Sep 28, 2026 via Card" },
-  { id: "INV-2026-083", title: "Athletics & Campus Facilities", amount: "$200.00", dueDate: "Nov 15, 2026", status: "Paid", paidAt: "Nov 02, 2026 via Wire" },
+  { id: "INV-2026-081", title: "Academic Year Tuition - Term 1", amount: "GH₵3,450.00", dueDate: "Sep 15, 2026", status: "Paid", paidAt: "Sep 12, 2026 via MTN MoMo" },
+  { id: "INV-2026-082", title: "STEM Technology & Lab Pass", amount: "GH₵350.00", dueDate: "Oct 01, 2026", status: "Paid", paidAt: "Sep 28, 2026 via Telecel Cash" },
+  { id: "INV-2026-083", title: "Athletics & Campus Facilities", amount: "GH₵200.00", dueDate: "Nov 15, 2026", status: "Paid", paidAt: "Nov 02, 2026 via GCB Bank" },
 ];
 
 function StudentProfile({ onNavigate }) {

@@ -8,7 +8,7 @@ const INITIAL_SUBSCRIPTIONS = [
     schoolId: "SCH-001",
     schoolName: "St. Mary International Academy",
     plan: "Enterprise",
-    amount: "$4,000 / mo",
+    amount: "GH₵4,000 / mo",
     studentsUsed: 3400,
     studentLimit: 4000,
     storageUsedGB: 3800,
@@ -21,7 +21,7 @@ const INITIAL_SUBSCRIPTIONS = [
     schoolId: "SCH-002",
     schoolName: "Oakridge High School",
     plan: "Enterprise",
-    amount: "$3,290 / mo",
+    amount: "GH₵3,290 / mo",
     studentsUsed: 2850,
     studentLimit: 3000,
     storageUsedGB: 2400,
@@ -34,7 +34,7 @@ const INITIAL_SUBSCRIPTIONS = [
     schoolId: "SCH-003",
     schoolName: "Greenwood Preparatory",
     plan: "Professional",
-    amount: "$1,850 / mo",
+    amount: "GH₵1,850 / mo",
     studentsUsed: 1420,
     studentLimit: 1500,
     storageUsedGB: 1100,
@@ -47,7 +47,7 @@ const INITIAL_SUBSCRIPTIONS = [
     schoolId: "SCH-004",
     schoolName: "Horizon Collegiate Institute",
     plan: "Professional",
-    amount: "$1,499 / mo",
+    amount: "GH₵1,499 / mo",
     studentsUsed: 980,
     studentLimit: 1200,
     storageUsedGB: 850,
@@ -60,7 +60,7 @@ const INITIAL_SUBSCRIPTIONS = [
     schoolId: "SCH-005",
     schoolName: "Beacon Hill Grammar School",
     plan: "Starter",
-    amount: "$499 / mo",
+    amount: "GH₵499 / mo",
     studentsUsed: 420,
     studentLimit: 500,
     storageUsedGB: 320,
@@ -228,25 +228,25 @@ function SubscriptionManagement({ onNavigate, onLogout }) {
       <div className="sub-rev-grid">
         <div className="sub-rev-card">
           <div className="sub-rev-label">Monthly Recurring Revenue (MRR)</div>
-          <div className="sub-rev-val">$184,200</div>
+          <div className="sub-rev-val">GH₵184,200</div>
           <div className="sub-rev-trend">↑ +14.6% vs last quarter</div>
         </div>
 
         <div className="sub-rev-card">
           <div className="sub-rev-label">Annual Run Rate (ARR)</div>
-          <div className="sub-rev-val">$2,210,400</div>
+          <div className="sub-rev-val">GH₵2,210,400</div>
           <div className="sub-rev-trend">↑ 48 Active School Contracts</div>
         </div>
 
         <div className="sub-rev-card">
           <div className="sub-rev-label">Avg. Revenue Per School (ARPS)</div>
-          <div className="sub-rev-val">$3,837 / mo</div>
+          <div className="sub-rev-val">GH₵3,837 / mo</div>
           <div style={{ fontSize: "12px", color: "#94a3b8" }}>Enterprise-weighted</div>
         </div>
 
         <div className="sub-rev-card">
           <div className="sub-rev-label">Pending / Overdue Invoices</div>
-          <div className="sub-rev-val" style={{ color: "#fbbf24" }}>$3,348</div>
+          <div className="sub-rev-val" style={{ color: "#fbbf24" }}>GH₵3,348</div>
           <div style={{ fontSize: "12px", color: "#ef4444" }}>1 Overdue • 1 Due Soon</div>
         </div>
       </div>
@@ -261,7 +261,7 @@ function SubscriptionManagement({ onNavigate, onLogout }) {
           {/* Starter Plan */}
           <div className="sub-plan-card">
             <h3 className="sub-plan-name">Starter Tier</h3>
-            <div className="sub-plan-price">$499 <span className="sub-plan-cycle">/ month</span></div>
+            <div className="sub-plan-price">GH₵499 <span className="sub-plan-cycle">/ month</span></div>
             <p style={{ fontSize: "12px", color: "#94a3b8", margin: 0 }}>
               Ideal for single-campus prep and elementary schools.
             </p>
@@ -276,7 +276,7 @@ function SubscriptionManagement({ onNavigate, onLogout }) {
           {/* Professional Plan */}
           <div className="sub-plan-card">
             <h3 className="sub-plan-name">Professional Tier</h3>
-            <div className="sub-plan-price">$1,499 <span className="sub-plan-cycle">/ month</span></div>
+            <div className="sub-plan-price">GH₵1,499 <span className="sub-plan-cycle">/ month</span></div>
             <p style={{ fontSize: "12px", color: "#94a3b8", margin: 0 }}>
               For expanding middle and high schools with multiple programs.
             </p>
@@ -293,7 +293,7 @@ function SubscriptionManagement({ onNavigate, onLogout }) {
           <div className="sub-plan-card featured">
             <span className="sub-plan-badge">Most Popular</span>
             <h3 className="sub-plan-name">Enterprise Edition</h3>
-            <div className="sub-plan-price">$3,499+ <span className="sub-plan-cycle">/ month</span></div>
+            <div className="sub-plan-price">GH₵3,499+ <span className="sub-plan-cycle">/ month</span></div>
             <p style={{ fontSize: "12px", color: "#c7d2fe", margin: 0 }}>
               Full institutional multi-campus network with custom white-labeling.
             </p>
@@ -439,9 +439,9 @@ function SubscriptionManagement({ onNavigate, onLogout }) {
                   value={newPlanTier}
                   onChange={(e) => setNewPlanTier(e.target.value)}
                 >
-                  <option value="Enterprise">Enterprise ($3,499+/mo)</option>
-                  <option value="Professional">Professional ($1,499/mo)</option>
-                  <option value="Starter">Starter ($499/mo)</option>
+                  <option value="Enterprise">Enterprise (GH₵3,499+/mo)</option>
+                  <option value="Professional">Professional (GH₵1,499/mo)</option>
+                  <option value="Starter">Starter (GH₵499/mo)</option>
                 </select>
               </div>
 
