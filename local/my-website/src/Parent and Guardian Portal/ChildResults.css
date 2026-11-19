@@ -1,0 +1,422 @@
+/* ChildResults.css */
+
+.cr-container {
+  min-height: 100vh;
+  background: radial-gradient(circle at 10% 20%, rgba(20, 24, 40, 0.95), rgba(10, 12, 22, 1));
+  color: #f1f5f9;
+  padding: 24px 32px 64px 32px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Header */
+.cr-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.cr-title-box {
+  max-width: 760px;
+}
+
+.cr-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  font-weight: 800;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.cr-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.cr-subtitle {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.cr-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cr-btn-print {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff;
+  border: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+  transition: all 0.2s ease;
+}
+
+.cr-btn-print:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.45);
+}
+
+/* Printable Report Sheet */
+.cr-report-sheet {
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 16px;
+  padding: 36px 40px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  border: 2px solid #e2e8f0;
+}
+
+.cr-sheet-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #cbd5e1;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.cr-crest-wrap {
+  display: flex;
+  gap: 16px;
+}
+
+.cr-crest-circle {
+  width: 56px;
+  height: 56px;
+  background: #1e3a8a;
+  color: #facc15;
+  font-weight: 900;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 3px double #facc15;
+  flex-shrink: 0;
+}
+
+.cr-school-name {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1e3a8a;
+}
+
+.cr-school-motto {
+  margin: 2px 0;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: #64748b;
+}
+
+.cr-school-loc {
+  margin: 0;
+  font-size: 0.74rem;
+  color: #475569;
+}
+
+.cr-sheet-meta-box {
+  text-align: right;
+}
+
+.cr-terminal-badge {
+  display: inline-block;
+  background: #1e3a8a;
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+.cr-term-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.cr-cohort-name,
+.cr-publish-date {
+  font-size: 0.78rem;
+  color: #475569;
+  margin-top: 2px;
+}
+
+/* Particulars Bar */
+.cr-student-particulars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 800px) {
+  .cr-student-particulars {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.cr-part-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.cr-part-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #64748b;
+  margin-bottom: 2px;
+}
+
+.cr-part-val {
+  font-size: 0.92rem;
+  color: #0f172a;
+}
+
+.cr-part-col small {
+  font-size: 0.74rem;
+  color: #475569;
+}
+
+.cr-part-col.highlight {
+  background: #ecfdf5;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #a7f3d0;
+}
+
+.cr-rank-val {
+  font-size: 1rem;
+  color: #047857;
+  font-weight: 800;
+}
+
+/* KPI Summary Strip */
+.cr-kpi-summary-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.cr-kpi-pill {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 10px 14px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cr-kpi-pill span {
+  font-size: 0.7rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.cr-kpi-pill strong {
+  font-size: 1.15rem;
+  color: #0f172a;
+  margin-top: 2px;
+  font-family: monospace;
+}
+
+/* Marks Table */
+.cr-marks-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+
+.cr-marks-table th {
+  background: #f8fafc;
+  border-top: 1px solid #cbd5e1;
+  border-bottom: 2px solid #cbd5e1;
+  padding: 9px 12px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #475569;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.cr-marks-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.82rem;
+  color: #1e293b;
+}
+
+.cr-num {
+  font-family: monospace;
+}
+
+.cr-grade-tag {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 0.76rem;
+}
+
+.grade-A {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.grade-B {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.cr-remarks-cell {
+  font-size: 0.78rem;
+  color: #475569;
+  font-style: italic;
+}
+
+/* Remarks Boxes */
+.cr-remarks-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .cr-remarks-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cr-remark-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cr-remark-box h4 {
+  margin: 0 0 6px 0;
+  font-size: 0.74rem;
+  color: #1e3a8a;
+  font-weight: 800;
+}
+
+.cr-remark-box p {
+  margin: 0 0 12px 0;
+  font-size: 0.82rem;
+  color: #334155;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.cr-tutor-sign {
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cr-tutor-sign strong {
+  font-size: 0.8rem;
+  color: #0f172a;
+}
+
+.cr-tutor-sign small {
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+/* Footer Seal */
+.cr-sheet-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #cbd5e1;
+  padding-top: 16px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.cr-grading-scale {
+  font-size: 0.72rem;
+  color: #64748b;
+  max-width: 480px;
+}
+
+.cr-seal-stamp {
+  border: 2px dashed #1e3a8a;
+  padding: 6px 14px;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  color: #1e3a8a;
+  font-weight: 800;
+  font-size: 0.65rem;
+  line-height: 1.3;
+  transform: rotate(-4deg);
+}
+
+.cr-empty-card {
+  background: rgba(30, 41, 59, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  color: #94a3b8;
+}
+
+/* Print CSS */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-report-card,
+  #printable-report-card * {
+    visibility: visible;
+  }
+  #printable-report-card {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: none;
+    padding: 0;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

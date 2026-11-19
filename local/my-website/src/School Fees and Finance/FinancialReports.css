@@ -1,0 +1,404 @@
+/* FinancialReports.css */
+
+.fr-container {
+  min-height: 100vh;
+  background: radial-gradient(circle at 10% 20%, rgba(20, 24, 40, 0.95), rgba(10, 12, 22, 1));
+  color: #f1f5f9;
+  padding: 24px 32px 64px 32px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Toast */
+.fr-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  animation: frSlideInRight 0.3s ease-out;
+}
+
+@keyframes frSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fr-toast-success {
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  color: #34d399;
+}
+
+.fr-toast-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Header */
+.fr-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.fr-title-box {
+  max-width: 760px;
+}
+
+.fr-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  font-weight: 800;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.fr-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.fr-subtitle {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.fr-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fr-btn-export {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.fr-btn-export:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.fr-btn-print {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+  transition: all 0.2s ease;
+}
+
+/* Metrics Grid */
+.fr-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.fr-metric-card {
+  background: rgba(30, 41, 59, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  backdrop-filter: blur(12px);
+}
+
+.fr-metric-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.fr-metric-label {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.fr-metric-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+.fr-metric-sub {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+/* Statement Sheet */
+.fr-statement-sheet {
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 16px;
+  padding: 40px 44px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  border: 2px solid #e2e8f0;
+}
+
+.fr-sheet-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #cbd5e1;
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+  gap: 20px;
+}
+
+.fr-sheet-crest {
+  display: flex;
+  gap: 16px;
+}
+
+.fr-crest-emblem {
+  width: 58px;
+  height: 58px;
+  background: #1e3a8a;
+  color: #facc15;
+  font-weight: 900;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 3px double #facc15;
+  flex-shrink: 0;
+}
+
+.fr-inst-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1e3a8a;
+}
+
+.fr-inst-subtitle {
+  margin: 3px 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #475569;
+}
+
+.fr-inst-meta {
+  margin: 0;
+  font-size: 0.74rem;
+  color: #64748b;
+}
+
+.fr-sheet-meta-right {
+  text-align: right;
+}
+
+.fr-badge-official {
+  display: inline-block;
+  background: #1e3a8a;
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+.fr-fiscal-period {
+  font-size: 0.8rem;
+  color: #475569;
+  line-height: 1.4;
+}
+
+.fr-section-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1e3a8a;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 24px 0 12px 0;
+  border-left: 4px solid #1e3a8a;
+  padding-left: 10px;
+}
+
+/* Tables */
+.fr-summary-table,
+.fr-category-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 26px;
+}
+
+.fr-summary-table th,
+.fr-category-table th {
+  background: #f8fafc;
+  border-top: 1px solid #cbd5e1;
+  border-bottom: 2px solid #cbd5e1;
+  padding: 10px 14px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #475569;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.fr-summary-table td,
+.fr-category-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.84rem;
+  color: #1e293b;
+}
+
+.fr-subtotal-row {
+  background: #f1f5f9;
+  border-top: 2px solid #cbd5e1;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+.fr-subtotal-row.highlight {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #065f46;
+}
+
+.fr-amt {
+  font-family: monospace;
+  white-space: nowrap;
+}
+
+.fr-progress-bar {
+  width: 100%;
+  background: #e2e8f0;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fr-progress-fill {
+  background: #047857;
+  height: 100%;
+  border-radius: 4px;
+}
+
+/* Signatures */
+.fr-sheet-signatures {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 2px solid #cbd5e1;
+  padding-top: 24px;
+  margin-top: 20px;
+}
+
+.fr-sign-block {
+  text-align: center;
+  width: 190px;
+}
+
+.fr-sig-line {
+  border-bottom: 1px solid #94a3b8;
+  height: 28px;
+  margin-bottom: 6px;
+}
+
+.fr-sign-block strong {
+  display: block;
+  font-size: 0.82rem;
+  color: #0f172a;
+}
+
+.fr-sign-block small {
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.fr-seal-circle {
+  width: 90px;
+  height: 90px;
+  border: 2px dashed #047857;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #047857;
+  font-weight: 800;
+  font-size: 0.65rem;
+  line-height: 1.2;
+  transform: rotate(-8deg);
+}
+
+/* Print CSS */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-financial-statement,
+  #printable-financial-statement * {
+    visibility: visible;
+  }
+  #printable-financial-statement {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: none;
+    padding: 0;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

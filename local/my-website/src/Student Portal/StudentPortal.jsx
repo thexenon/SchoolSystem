@@ -459,14 +459,14 @@ function StudentPortal({ onNavigate, onLogout }) {
               <button
                 type="button"
                 className="sp-nav-btn sp-nav-btn-highlight"
-                onClick={() => showToast("Opening MTN MoMo / Telecel Cash Payment Gateway...")}
+                onClick={() => onNavigate ? onNavigate("online-payment") : (window.location.href = "/online-payment")}
               >
-                📱 Pay with Mobile Money
+                📱 Pay with Mobile Money (GH₵)
               </button>
               <button
                 type="button"
                 className="sp-nav-btn"
-                onClick={() => showToast("Downloading Official Fee Statement...")}
+                onClick={() => onNavigate ? onNavigate("fee-statements") : (window.location.href = "/fee-statements")}
               >
                 📥 Fee Statement
               </button>

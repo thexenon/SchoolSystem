@@ -269,6 +269,13 @@ function SchoolDashboard({ onNavigate, onLogout }) {
           <button
             type="button"
             className="school-menu-item"
+            onClick={() => navigateTo("student-invoices")}
+          >
+            💳 Fees & Finance
+          </button>
+          <button
+            type="button"
+            className="school-menu-item"
             onClick={() => navigateTo("school-settings")}
           >
             ⚙️ Settings
@@ -740,6 +747,89 @@ function SchoolDashboard({ onNavigate, onLogout }) {
             </div>
           </div>
 
+          {/* School Fees & Financial Command Center (Module 10) */}
+          <div className="sch-card">
+            <div className="sch-card-header">
+              <div>
+                <h2 className="sch-card-title">
+                  <span>💳</span> School Fees & Financial Command Center
+                </h2>
+                <div style={{ fontSize: "12px", color: "#94a3b8", marginTop: "4px" }}>
+                  Cohort Tariffs, Student Billing, MoMo & Bank Collections, Arrears & Audit in GH₵
+                </div>
+              </div>
+              <button
+                type="button"
+                className="school-nav-btn school-nav-btn-highlight"
+                style={{ fontSize: "12px" }}
+                onClick={() => navigateTo("student-invoices")}
+              >
+                Open Finance Suite (13 Screens) →
+              </button>
+            </div>
+
+            <div className="sch-attendance-meters" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))" }}>
+              <div className="sch-meter-item">
+                <div className="sch-meter-number" style={{ color: "#34d399", fontSize: "17px" }}>GH₵ 51,265</div>
+                <div className="sch-meter-label">Total Invoiced (Net)</div>
+              </div>
+              <div className="sch-meter-item">
+                <div className="sch-meter-number" style={{ color: "#10b981", fontSize: "17px" }}>GH₵ 30,665</div>
+                <div className="sch-meter-label">Realized Collections</div>
+              </div>
+              <div className="sch-meter-item">
+                <div className="sch-meter-number" style={{ color: "#f87171", fontSize: "17px" }}>GH₵ 11,150</div>
+                <div className="sch-meter-label">Arrears Defaulters</div>
+              </div>
+              <div className="sch-meter-item">
+                <div className="sch-meter-number" style={{ color: "#c084fc", fontSize: "17px" }}>GH₵ 5,735</div>
+                <div className="sch-meter-label">Scholarships & Grants</div>
+              </div>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: "8px", marginTop: "16px" }}>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("fee-categories")}>
+                📂 Fee Categories
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("fee-structure")}>
+                📐 Fee Structures
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("student-invoices")}>
+                📑 Student Invoices
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("record-payment")}>
+                💰 Record Payment
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("payment-history")}>
+                📜 Payment History
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("fee-statements")}>
+                📋 Fee Statements
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("outstanding-fees")}>
+                🚨 Outstanding Fees
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("discounts-and-scholarships")}>
+                🎖️ Scholarships & Waivers
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("receipts")}>
+                🧾 Payment Receipts
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("refunds-and-reversals")}>
+                ↩️ Refunds & Reversals
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("online-payment")}>
+                💳 Online MoMo Checkout
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("payment-reconciliation")}>
+                ⚖️ Bank Reconciliation
+              </button>
+              <button type="button" className="school-nav-btn" style={{ fontSize: "11px", padding: "8px 10px", justifyContent: "flex-start" }} onClick={() => navigateTo("financial-reports")}>
+                📊 Financial Reports
+              </button>
+            </div>
+          </div>
+
           {/* Enrolled Students Preview for This School */}
           <div className="sch-card">
             <div className="sch-card-header">
@@ -941,6 +1031,15 @@ function SchoolDashboard({ onNavigate, onLogout }) {
                 onClick={() => navigateTo("assessment-setup")}
               >
                 <span>🏆 Examinations & Results Portal (12 Screens)</span>
+                <span>→</span>
+              </button>
+              <button
+                type="button"
+                className="school-nav-btn school-nav-btn-highlight"
+                style={{ justifyContent: "space-between", padding: "12px 16px" }}
+                onClick={() => navigateTo("admissions-dashboard")}
+              >
+                <span>🏛️ Admissions & Enrollment Suite (9 Screens)</span>
                 <span>→</span>
               </button>
               <button

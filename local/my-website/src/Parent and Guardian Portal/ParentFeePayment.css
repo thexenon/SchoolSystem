@@ -1,0 +1,477 @@
+/* ParentFeePayment.css */
+
+.pfp-container {
+  min-height: 100vh;
+  background: radial-gradient(circle at 10% 20%, rgba(20, 24, 40, 0.95), rgba(10, 12, 22, 1));
+  color: #f1f5f9;
+  padding: 24px 32px 64px 32px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Toast */
+.pfp-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  animation: pfpSlideInRight 0.3s ease-out;
+}
+
+@keyframes pfpSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.pfp-toast-success {
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  color: #34d399;
+}
+
+.pfp-toast-error {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  color: #f87171;
+}
+
+.pfp-toast-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Header */
+.pfp-header {
+  margin-bottom: 24px;
+}
+
+.pfp-title-box {
+  max-width: 760px;
+}
+
+.pfp-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  font-weight: 800;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.pfp-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.pfp-subtitle {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Grid Layout */
+.pfp-layout-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 26px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .pfp-layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Form Card */
+.pfp-form-card {
+  background: rgba(30, 41, 59, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 26px;
+  backdrop-filter: blur(14px);
+}
+
+.pfp-card-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 18px 0;
+}
+
+/* Channel Tabs */
+.pfp-channel-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.pfp-tab-btn {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+  color: #cbd5e1;
+}
+
+.pfp-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.pfp-tab-btn.active {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+.pfp-tab-icon {
+  font-size: 1.4rem;
+}
+
+.pfp-tab-btn strong {
+  display: block;
+  font-size: 0.88rem;
+}
+
+.pfp-tab-btn small {
+  display: block;
+  font-size: 0.7rem;
+  color: #94a3b8;
+}
+
+/* Form Fields */
+.pfp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pfp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pfp-field label {
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+.pfp-currency-input {
+  display: flex;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9px;
+  padding-left: 12px;
+}
+
+.pfp-currency-input span {
+  font-weight: 800;
+  color: #10b981;
+  font-size: 0.95rem;
+}
+
+.pfp-currency-input input {
+  border: none;
+  background: transparent;
+  flex: 1;
+  padding: 10px 12px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  outline: none;
+  font-family: monospace;
+}
+
+.pfp-channel-box input {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  padding: 10px 14px;
+  border-radius: 9px;
+  font-size: 0.88rem;
+  outline: none;
+}
+
+.pfp-hint {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+.pfp-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.pfp-btn-submit {
+  width: 100%;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
+  transition: all 0.2s;
+  margin-top: 10px;
+}
+
+.pfp-btn-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+}
+
+.pfp-btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Summary Card */
+.pfp-summary-card {
+  background: rgba(30, 41, 59, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 24px;
+  backdrop-filter: blur(14px);
+}
+
+.pfp-pill {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  padding: 3px 8px;
+  border-radius: 5px;
+}
+
+.pfp-sum-header h3 {
+  margin: 8px 0 2px 0;
+  font-size: 1.25rem;
+  color: #ffffff;
+}
+
+.pfp-sum-header p {
+  margin: 0 0 16px 0;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.pfp-sum-box {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.pfp-sum-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: #cbd5e1;
+}
+
+.pfp-sum-row.net {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 6px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.pfp-sum-row.due {
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-top: 6px;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.pfp-security-banner {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.pfp-security-banner strong {
+  font-size: 0.82rem;
+  color: #34d399;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.pfp-security-banner p {
+  margin: 0;
+  font-size: 0.76rem;
+  color: #94a3b8;
+}
+
+/* Modals */
+.pfp-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.pfp-process-box {
+  background: #141a29;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 18px;
+  max-width: 440px;
+  width: 100%;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+}
+
+.pfp-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(16, 185, 129, 0.2);
+  border-top-color: #10b981;
+  border-radius: 50%;
+  animation: pfpSpin 0.9s linear infinite;
+  margin: 0 auto 16px auto;
+}
+
+@keyframes pfpSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.pfp-process-box h3 {
+  margin: 0 0 8px 0;
+  color: #ffffff;
+}
+
+.pfp-step-text {
+  font-size: 0.88rem;
+  color: #34d399;
+  margin: 0 0 12px 0;
+  min-height: 40px;
+}
+
+.pfp-process-box small {
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.pfp-receipt-box {
+  background: #141a29;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 18px;
+  max-width: 480px;
+  width: 100%;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+}
+
+.pfp-receipt-check {
+  width: 52px;
+  height: 52px;
+  background: #10b981;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin: 0 auto 14px auto;
+}
+
+.pfp-receipt-box h2 {
+  margin: 0 0 6px 0;
+  color: #ffffff;
+}
+
+.pfp-receipt-box p {
+  margin: 0 0 18px 0;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.pfp-receipt-details {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 14px;
+  text-align: left;
+  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.pfp-receipt-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.pfp-btn-print-rec {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pfp-btn-done {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}

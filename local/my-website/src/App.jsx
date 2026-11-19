@@ -79,8 +79,67 @@ import {
   TimetableConflictChecker,
   SubstituteTeacherManagement,
 } from "./Timetable Management";
-import StudentPortal from "./Student Portal/StudentPortal";
+import {
+  FeeCategories,
+  FeeStructure,
+  StudentInvoices,
+  RecordPayment,
+  PaymentHistory,
+  FeeStatements,
+  OutstandingFees,
+  DiscountsAndScholarships,
+  Receipts,
+  RefundsAndReversals,
+  OnlinePayment,
+  PaymentReconciliation,
+  FinancialReports,
+} from "./School Fees and Finance";
+import {
+  ParentDashboard,
+  MyChildren,
+  ChildProfile,
+  ChildAttendance,
+  ChildResults,
+  ParentFeeStatements,
+  ParentFeePayment,
+  SchoolAnnouncements,
+  ParentSchoolCalendar,
+  ContactSchool,
+} from "./Parent and Guardian Portal";
+import {
+  StudentDashboard,
+  MyProfile,
+  MyTimetable,
+  MyAttendance,
+  MyResults,
+  MyAssignments,
+  LearningMaterials,
+  StudentCalendar,
+  MyFees,
+  StudentNotifications,
+  StudentPortal,
+} from "./Student Portal";
 import TeacherPortal from "./Teacher Portal/TeacherPortal";
+import {
+  AssignmentList,
+  CreateAssignment,
+  AssignmentDetails,
+  StudentSubmissions,
+  SubmissionReview,
+  GradingAndFeedback,
+  LearningResources,
+} from "./Assignments and Learning Materials";
+import {
+  AdmissionsDashboard,
+  ApplicationForm,
+  ApplicantList,
+  ApplicantProfile,
+  ApplicationReview,
+  AdmissionDecisions,
+  AdmissionLetters,
+  EnrollmentConfirmation,
+  AdmissionsReports,
+} from "./Admission and Enrollment";
 import {
   isSchoolAdminAuthenticated,
   logoutSchoolAdmin,
@@ -263,9 +322,68 @@ function App() {
         <Route path="/timetable-conflict-checker" element={<SchoolProtected Component={TimetableConflictChecker} />} />
         <Route path="/substitute-teacher-management" element={<SchoolProtected Component={SubstituteTeacherManagement} />} />
 
-        {/* Dedicated Student and Teacher Workstation Portals */}
-        <Route path="/student-portal" element={<ScreenWrapper Component={StudentPortal} />} />
+        {/* Module 10: School Fees and Finance */}
+        <Route path="/fee-categories" element={<SchoolProtected Component={FeeCategories} />} />
+        <Route path="/fee-structure" element={<SchoolProtected Component={FeeStructure} />} />
+        <Route path="/student-invoices" element={<SchoolProtected Component={StudentInvoices} />} />
+        <Route path="/record-payment" element={<SchoolProtected Component={RecordPayment} />} />
+        <Route path="/payment-history" element={<SchoolProtected Component={PaymentHistory} />} />
+        <Route path="/fee-statements" element={<SchoolProtected Component={FeeStatements} />} />
+        <Route path="/outstanding-fees" element={<SchoolProtected Component={OutstandingFees} />} />
+        <Route path="/discounts-and-scholarships" element={<SchoolProtected Component={DiscountsAndScholarships} />} />
+        <Route path="/receipts" element={<SchoolProtected Component={Receipts} />} />
+        <Route path="/refunds-and-reversals" element={<SchoolProtected Component={RefundsAndReversals} />} />
+        <Route path="/online-payment" element={<ScreenWrapper Component={OnlinePayment} />} />
+        <Route path="/payment-reconciliation" element={<SchoolProtected Component={PaymentReconciliation} />} />
+        <Route path="/financial-reports" element={<SchoolProtected Component={FinancialReports} />} />
+
+        {/* Module 12: Student Portal (10 Modular Screens) */}
+        <Route path="/student-portal" element={<ScreenWrapper Component={StudentDashboard} />} />
+        <Route path="/student-dashboard" element={<ScreenWrapper Component={StudentDashboard} />} />
+        <Route path="/student-profile" element={<ScreenWrapper Component={MyProfile} />} />
+        <Route path="/student-timetable" element={<ScreenWrapper Component={MyTimetable} />} />
+        <Route path="/student-attendance" element={<ScreenWrapper Component={MyAttendance} />} />
+        <Route path="/student-results" element={<ScreenWrapper Component={MyResults} />} />
+        <Route path="/student-assignments" element={<ScreenWrapper Component={MyAssignments} />} />
+        <Route path="/student-materials" element={<ScreenWrapper Component={LearningMaterials} />} />
+        <Route path="/student-calendar" element={<ScreenWrapper Component={StudentCalendar} />} />
+        <Route path="/student-fees" element={<ScreenWrapper Component={MyFees} />} />
+        <Route path="/student-notifications" element={<ScreenWrapper Component={StudentNotifications} />} />
+
+        {/* Dedicated Teacher Workstation Portal */}
         <Route path="/teacher-portal" element={<ScreenWrapper Component={TeacherPortal} />} />
+
+        {/* Module 11: Parent and Guardian Portal */}
+        <Route path="/parent-dashboard" element={<ScreenWrapper Component={ParentDashboard} />} />
+        <Route path="/my-children" element={<ScreenWrapper Component={MyChildren} />} />
+        <Route path="/child-profile" element={<ScreenWrapper Component={ChildProfile} />} />
+        <Route path="/child-attendance" element={<ScreenWrapper Component={ChildAttendance} />} />
+        <Route path="/child-results" element={<ScreenWrapper Component={ChildResults} />} />
+        <Route path="/parent-fee-statements" element={<ScreenWrapper Component={ParentFeeStatements} />} />
+        <Route path="/parent-fee-payment" element={<ScreenWrapper Component={ParentFeePayment} />} />
+        <Route path="/school-announcements" element={<ScreenWrapper Component={SchoolAnnouncements} />} />
+        <Route path="/parent-calendar" element={<ScreenWrapper Component={ParentSchoolCalendar} />} />
+        <Route path="/contact-school" element={<ScreenWrapper Component={ContactSchool} />} />
+
+        {/* Module 13: Assignments and Learning Materials */}
+        <Route path="/assignment-list" element={<ScreenWrapper Component={AssignmentList} />} />
+        <Route path="/create-assignment" element={<ScreenWrapper Component={CreateAssignment} />} />
+        <Route path="/assignment-details" element={<ScreenWrapper Component={AssignmentDetails} />} />
+        <Route path="/student-submissions" element={<ScreenWrapper Component={StudentSubmissions} />} />
+        <Route path="/submission-review" element={<ScreenWrapper Component={SubmissionReview} />} />
+        <Route path="/grading-feedback" element={<ScreenWrapper Component={GradingAndFeedback} />} />
+        <Route path="/learning-resources" element={<ScreenWrapper Component={LearningResources} />} />
+
+        {/* Module 14: Admission and Enrollment (9 Screens) */}
+        <Route path="/admissions-dashboard" element={<ScreenWrapper Component={AdmissionsDashboard} />} />
+        <Route path="/application-form" element={<ScreenWrapper Component={ApplicationForm} />} />
+        <Route path="/applicant-list" element={<ScreenWrapper Component={ApplicantList} />} />
+        <Route path="/applicant-profile" element={<ScreenWrapper Component={ApplicantProfile} />} />
+        <Route path="/application-review" element={<ScreenWrapper Component={ApplicationReview} />} />
+        <Route path="/admission-decisions" element={<ScreenWrapper Component={AdmissionDecisions} />} />
+        <Route path="/admission-letters" element={<ScreenWrapper Component={AdmissionLetters} />} />
+        <Route path="/enrollment-confirmation" element={<ScreenWrapper Component={EnrollmentConfirmation} />} />
+        <Route path="/admissions-reports" element={<ScreenWrapper Component={AdmissionsReports} />} />
       </Routes>
     </BrowserRouter>
   );

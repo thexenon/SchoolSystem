@@ -1,0 +1,473 @@
+/* AdmissionDecisions.css - Admissions Selection & Official Decisions Styling */
+
+.ad-page-container {
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #0d1527, #070a13 80%);
+  color: #e2e8f0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  padding-bottom: 4rem;
+}
+
+.ad-content-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.ad-toast {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(16, 185, 129, 0.95);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 0.85rem 1.4rem;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Switcher Bar */
+.ad-switcher-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.8rem;
+  margin-bottom: 1.5rem;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0.8rem 1.2rem;
+  backdrop-filter: blur(12px);
+}
+
+.ad-selector-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.ad-selector-wrap label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.ad-selector-wrap select {
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.ad-bar-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.ad-btn-action {
+  border: none;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ad-btn-profile {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.ad-btn-review {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.ad-btn-letter {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.ad-btn-action:hover {
+  filter: brightness(1.2);
+  transform: translateY(-1px);
+}
+
+/* Candidate Hero Summary */
+.ad-hero-summary {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  backdrop-filter: blur(16px);
+  margin-bottom: 2rem;
+}
+
+.ad-summary-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.ad-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border: 2px solid rgba(56, 189, 248, 0.3);
+}
+
+.ad-badge-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+
+.ad-id-badge {
+  background: rgba(14, 165, 233, 0.15);
+  color: #38bdf8;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.ad-status-pill {
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.ad-pill-accepted {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+.ad-pill-waitlisted {
+  background: rgba(168, 85, 247, 0.2);
+  color: #c084fc;
+}
+
+.ad-pill-pending-review,
+.ad-pill-under-review {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+
+.ad-pill-rejected {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+.ad-summary-left h3 {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 0.2rem 0;
+}
+
+.ad-summary-left p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.ad-summary-rating {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0.8rem 1.4rem;
+  text-align: center;
+}
+
+.ad-score-lbl {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.ad-score-val {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+.ad-score-val span {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+/* Decision Form */
+.ad-decision-form {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 2.2rem;
+  backdrop-filter: blur(14px);
+  margin-bottom: 2.5rem;
+}
+
+.ad-form-header h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin: 0 0 0.3rem;
+}
+
+.ad-form-header p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin: 0 0 1.8rem;
+}
+
+/* Radio Cards */
+.ad-decision-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.ad-radio-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ad-radio-card input {
+  margin-top: 0.3rem;
+  accent-color: #0ea5e9;
+}
+
+.ad-radio-icon {
+  font-size: 1.8rem;
+}
+
+.ad-radio-text strong {
+  display: block;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.ad-radio-text p {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin: 0.3rem 0 0;
+}
+
+.ad-radio-card.active-accept {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.ad-radio-card.active-waitlist {
+  border-color: #c084fc;
+  background: rgba(168, 85, 247, 0.12);
+}
+
+.ad-radio-card.active-reject {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.12);
+}
+
+/* Accepted Parameters */
+.ad-accepted-params {
+  background: rgba(14, 165, 233, 0.05);
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  border-radius: 14px;
+  padding: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.ad-section-hdr {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-bottom: 1.25rem;
+}
+
+.ad-grid-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.ad-field {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ad-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.ad-field input,
+.ad-field select,
+.ad-field textarea {
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  padding: 0.75rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  font-family: inherit;
+}
+
+.ad-field input:focus,
+.ad-field select:focus,
+.ad-field textarea:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+.ad-hint {
+  font-size: 0.75rem;
+  color: #10b981;
+}
+
+/* Form Actions */
+.ad-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+}
+
+.ad-btn-cancel {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  padding: 0.75rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ad-btn-submit {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  border: none;
+  color: #ffffff;
+  padding: 0.75rem 1.6rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.35);
+  transition: all 0.2s;
+}
+
+.ad-btn-submit:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+.ad-btn-generate-letter {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border: none;
+  color: #ffffff;
+  padding: 0.75rem 1.6rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+}
+
+/* Decision Log Card */
+.ad-log-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.8rem;
+  backdrop-filter: blur(14px);
+  overflow-x: auto;
+}
+
+.ad-log-card h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.15rem;
+  color: #38bdf8;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.ad-log-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.ad-log-table th {
+  padding: 0.8rem 1rem;
+  background: rgba(30, 41, 59, 0.6);
+  color: #94a3b8;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.ad-log-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ad-btn-table-edit {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.ad-btn-table-edit:hover {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+}

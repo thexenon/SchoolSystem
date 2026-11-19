@@ -207,6 +207,15 @@ function Homepage() {
           <Link to="/teacher-portal" className="hub-action-btn hub-action-secondary">
             <span>👨‍🏫</span> Teacher & Faculty Portal
           </Link>
+          <Link to="/parent-dashboard" className="hub-action-btn hub-action-secondary">
+            <span>👨‍👩‍👧</span> Parent & Guardian Portal
+          </Link>
+          <Link to="/assignment-list" className="hub-action-btn hub-action-secondary">
+            <span>📁</span> Assignments & Learning Materials
+          </Link>
+          <Link to="/admissions-dashboard" className="hub-action-btn hub-action-secondary">
+            <span>🏛️</span> Admissions & Enrollment
+          </Link>
           <Link to="/school-dashboard" className="hub-action-btn hub-action-secondary">
             <span>🏫</span> School Administration
           </Link>
